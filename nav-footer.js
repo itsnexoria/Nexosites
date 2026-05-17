@@ -11,8 +11,8 @@ document.getElementById('nav-placeholder').innerHTML = `
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main">
   <div class="nav-inner">
     <a href="${ROOT}index.html" class="nav-brand">
-      <div class="nav-brand-mark">WC</div>
-      WEBCRAFT<span style="color:var(--cyan)">STUDIO</span>
+      <div class="nav-brand-mark">N</div>
+      NEXO<span style="color:var(--cyan)">SITES</span>
     </a>
     <ul class="nav-links">
       <li><a href="${ROOT}index.html"           class="nav-link">Home</a></li>
@@ -45,8 +45,8 @@ document.getElementById('footer-placeholder').innerHTML = `
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="${ROOT}index.html" class="nav-brand" style="margin-bottom:.25rem">
-          <div class="nav-brand-mark">WC</div>
-          WEBCRAFT<span style="color:var(--cyan)">STUDIO</span>
+          <div class="nav-brand-mark">N</div>
+          NEXO<span style="color:var(--cyan)">SITES</span>
         </a>
         <p class="footer-brand-desc">Premium web development for businesses across South Africa. You buy the domain — we handle everything else.</p>
         <div class="footer-socials">
@@ -85,7 +85,7 @@ document.getElementById('footer-placeholder').innerHTML = `
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span id="yr"></span> WebCraft Studio. All rights reserved.</span>
+      <span>&copy; <span id="yr"></span> NexoSites. All rights reserved.</span>
       <span>Made with <i class="fas fa-heart" style="color:#ef4444"></i> in South Africa</span>
     </div>
   </div>
@@ -93,7 +93,7 @@ document.getElementById('footer-placeholder').innerHTML = `
 
 /* ── WA + BACK TO TOP ──────────────────────────────────────────── */
 document.body.insertAdjacentHTML('beforeend', `
-  <a href="https://wa.me/27816137187?text=Hi!%20I%27d%20like%20a%20website." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website%20for%20my%20business." class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i><span>Chat with us</span>
   </a>
   <button id="back-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
