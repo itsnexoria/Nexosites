@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pricing | NexoSites — Websites from R1 000</title>
-  <meta name="description" content="Transparent, affordable website pricing. New websites from R1 000 to R2 000. Updates just R300 per request."/>
+  <title>Pricing | NexoSites — Websites from R1 000 / $55 USD</title>
+  <meta name="description" content="Transparent pricing for professional websites. From R1 000 / $55 (ZAR) / $55 (USD). No upfront fees — you only pay when you love it."/>
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -17,31 +17,62 @@
 <div id="nav-placeholder"></div>
 <main>
 
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-grid" aria-hidden="true"></div>
   <div class="page-hero-glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="eyebrow reveal" style="justify-content:center">No Hidden Fees</div>
+    <div class="eyebrow reveal" style="justify-content:center">No Hidden Fees. No Upfront Cost.</div>
     <h1 class="section-heading reveal">Simple, Honest <span class="gradient-text">Pricing</span></h1>
-    <p class="section-lead reveal" style="margin:1rem auto 0;text-align:center">We believe in transparent pricing. What you see is exactly what you pay.</p>
+    <p class="section-lead reveal" style="margin:1rem auto 0;text-align:center">
+      We build your site first. You only pay when you're happy with it.
+    </p>
   </div>
 </section>
 
-<!-- PRICING CARDS -->
+<!-- PRICING SECTION -->
 <section class="section">
   <div class="wrap">
+
+    <!-- Currency Toggle -->
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:3rem">
+      <div class="currency-toggle reveal" role="group" aria-label="Select currency">
+        <button class="cur-btn active" id="btn-zar" aria-pressed="true">🇿🇦 ZAR (R)</button>
+        <button class="cur-btn"        id="btn-usd" aria-pressed="false">🇺🇸 USD ($)</button>
+      </div>
+      <p class="rate-note reveal">USD prices are approximate — based on current exchange rate (~<span id="rate-display">R18.50</span> = $1)</p>
+    </div>
+
+    <!-- Cards -->
     <div class="price-grid">
 
       <!-- New Website -->
       <div class="price-card card reveal">
         <div class="pc-icon"><i class="fas fa-rocket"></i></div>
         <h2>New Website</h2>
-        <div class="pc-price">
+
+        <!-- ZAR -->
+        <div class="pc-price price-zar">
           <span class="pc-from">from</span>
           <span class="pc-amount gradient-text">R1 000</span>
           <span class="pc-to">up to R2 000</span>
         </div>
-        <p class="pc-desc">Price depends on the complexity and size of your project. We'll give you an exact quote before any work begins.</p>
+        <!-- USD -->
+        <div class="pc-price price-usd">
+          <span class="pc-from">from</span>
+          <span class="pc-amount gradient-text">$55</span>
+          <span class="pc-to">up to $110</span>
+        </div>
+
+        <p class="pc-desc">
+          We build your website first — you only pay once you're happy with it.
+          Price depends on complexity and size of your project.
+        </p>
+
+        <div class="pc-value-pill">
+          <i class="fas fa-shield-alt"></i> No payment until you approve
+        </div>
+
         <div class="pc-divider"></div>
         <ul class="pc-list">
           <li><i class="fas fa-check"></i> Custom design for your brand</li>
@@ -54,7 +85,7 @@
           <li><i class="fas fa-check"></i> Social media links</li>
           <li><i class="fas fa-check"></i> Speed optimised</li>
         </ul>
-        <a href="contact.html" class="btn btn-primary btn-block">Request a Quote <i class="fas fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-primary btn-block">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <!-- Update Requests -->
@@ -62,11 +93,24 @@
         <div class="pc-badge">Quick &amp; Easy</div>
         <div class="pc-icon"><i class="fas fa-edit"></i></div>
         <h2>Update Requests</h2>
-        <div class="pc-price">
+
+        <!-- ZAR -->
+        <div class="pc-price price-zar">
           <span class="pc-amount gradient-text">R300</span>
           <span class="pc-to">per request</span>
         </div>
-        <p class="pc-desc">One flat price per update. Simple, fair, and predictable — no surprises.</p>
+        <!-- USD -->
+        <div class="pc-price price-usd">
+          <span class="pc-amount gradient-text">~$16</span>
+          <span class="pc-to">per request</span>
+        </div>
+
+        <p class="pc-desc">One flat price per update. Simple, fair, and predictable — contact us anytime.</p>
+
+        <div class="pc-value-pill pc-value-pill-cyan">
+          <i class="fas fa-bolt"></i> Fast turnaround, always available
+        </div>
+
         <div class="pc-divider"></div>
         <ul class="pc-list">
           <li><i class="fas fa-check"></i> Text or content changes</li>
@@ -76,35 +120,83 @@
           <li><i class="fas fa-check"></i> Contact info updates</li>
           <li><i class="fas fa-check"></i> Social media link changes</li>
           <li><i class="fas fa-check"></i> Bug fixes &amp; corrections</li>
-          <li><i class="fas fa-check"></i> Fast turnaround</li>
           <li><i class="fas fa-check"></i> Available anytime</li>
         </ul>
         <a href="contact.html" class="btn btn-primary btn-block">Request an Update <i class="fas fa-arrow-right"></i></a>
       </div>
-
     </div>
 
     <!-- Info note -->
     <div class="price-note reveal">
-      <i class="fas fa-info-circle"></i>
-      <p><strong>Payment:</strong> 50% deposit to start, 50% on completion &amp; approval. Updates paid upfront. Transfers via EFT. Only requirement from your side is a domain purchase — we handle everything else.</p>
+      <i class="fas fa-globe"></i>
+      <p>We work with clients <strong>worldwide</strong>. Payments accepted via EFT (South Africa), PayPal, or bank transfer. USD pricing is approximate and may vary slightly with exchange rates. <a href="contact.html" style="color:var(--cyan)">Contact us</a> for a confirmed quote in your currency.</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ SNIPPET -->
-<section class="section" style="background:var(--dark)">
+<!-- HOW IT WORKS STRIP -->
+<section class="section-sm" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="how-strip">
+      <div class="hs-item reveal">
+        <div class="hs-num gradient-text">01</div>
+        <h3>You Contact Us</h3>
+        <p>Tell us about your business and what you need. We reply within 24 hours.</p>
+      </div>
+      <div class="hs-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+      <div class="hs-item reveal delay-1">
+        <div class="hs-num gradient-text">02</div>
+        <h3>We Build It</h3>
+        <p>We design and develop your website. No payment needed at this stage.</p>
+      </div>
+      <div class="hs-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+      <div class="hs-item reveal delay-2">
+        <div class="hs-num gradient-text">03</div>
+        <h3>You Approve &amp; Pay</h3>
+        <p>Happy with the result? Pay and we launch it. Simple as that.</p>
+      </div>
+      <div class="hs-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
+      <div class="hs-item reveal delay-3">
+        <div class="hs-num gradient-text">04</div>
+        <h3>We Go Live</h3>
+        <p>We link your domain, set up SSL, and your site is live for the world to see.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
   <div class="wrap">
     <div class="section-header-center">
       <div class="eyebrow reveal" style="justify-content:center">Pricing FAQ</div>
       <h2 class="section-heading reveal">Common <span class="gradient-text">Questions</span></h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What does the price range depend on?<i class="fas fa-plus faq-icon"></i></button><div class="faq-a"><p>The R1 000–R2 000 range is based on the size and complexity of your project. A simple landing page would be toward the lower end; a multi-page business site with many sections would be toward the higher end. We always give you an exact quote upfront.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What's included in one R300 update request?<i class="fas fa-plus faq-icon"></i></button><div class="faq-a"><p>One update request covers a reasonable set of changes like updating text, swapping images, adding or removing a section, changing colours, or updating contact details. Large redesigns or new pages are quoted separately.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Do I need to pay anything upfront?<i class="fas fa-plus faq-icon"></i></button><div class="faq-a"><p>Yes — we require a 50% deposit before work begins. The remaining 50% is due upon completion and your approval. Update requests are paid in full upfront.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Are there any recurring monthly fees?<i class="fas fa-plus faq-icon"></i></button><div class="faq-a"><p>No monthly fees from us. Your only recurring cost will be your domain renewal (typically R150–R400/year). Hosting costs may apply depending on the setup we choose together.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What if I'm not happy with the result?<i class="fas fa-plus faq-icon"></i></button><div class="faq-a"><p>We work with you throughout the process and include revision rounds before final delivery. We only ask for the final payment once you're happy with the result.</p></div></div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Do I pay anything upfront?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>No. We build your website first and you only pay once you're satisfied with the result. No deposit, no risk on your side.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What does the price depend on?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>The R1 000–R2 000 ($55–$110) range is based on project complexity. A simple landing page sits at the lower end; a full multi-page business site with many sections and features sits at the higher end. We give you an exact quote before starting.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What's included in one update request?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>One R300 / ~$16 request covers a reasonable set of changes: updating text, swapping images, adding or removing a section, changing contact info, or tweaking styles. Major redesigns or new full pages are quoted separately.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How do international clients pay?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>International clients can pay via PayPal or international bank transfer. We'll confirm the exact USD amount based on the current exchange rate at time of invoice. South African clients pay via EFT.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Are there monthly or recurring fees?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>No monthly fees from our side. Your only recurring cost is your domain renewal (~R150–R400 / ~$8–$22 per year). Hosting costs may apply depending on the setup — we'll discuss this transparently.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What if I'm not happy with the website?<i class="fas fa-plus faq-icon"></i></button>
+        <div class="faq-a"><p>You don't pay until you're happy — that's our guarantee. We'll work with you through revisions until the site is exactly what you envisioned.</p></div>
+      </div>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
       <a href="faq.html" class="btn btn-ghost reveal"><i class="fas fa-question-circle"></i> View All FAQs</a>
@@ -114,9 +206,9 @@
 
 <section class="inner-cta">
   <div class="wrap inner-cta-inner reveal">
-    <h2 class="section-heading">Ready to Get <span class="gradient-text">Started?</span></h2>
-    <p class="section-lead">Contact us for a free personalised quote — no obligation.</p>
-    <a href="contact.html" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-paper-plane"></i> Get Your Quote</a>
+    <h2 class="section-heading">Like What You See? <span class="gradient-text">Let's Talk.</span></h2>
+    <p class="section-lead">Get in touch for a free quote — no obligation, no upfront cost.</p>
+    <a href="contact.html" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-paper-plane"></i> Get Your Free Quote</a>
   </div>
 </section>
 </main>
@@ -124,5 +216,6 @@
 <script src="../nav-footer.js"></script>
 <script src="../main.js"></script>
 <script src="faq.js"></script>
+<script src="pricing.js"></script>
 </body>
 </html>
