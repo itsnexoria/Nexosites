@@ -12,7 +12,7 @@ document.getElementById('nav-placeholder').innerHTML = `
   <div class="nav-inner">
     <a href="${ROOT}index.html" class="nav-brand" aria-label="NexoSites Home">
       <div class="nav-brand-mark">N</div>
-      NEXO<span style="color:var(--cyan)">SITES</span>
+      NEXO<span style="color:var(--purple-l)">SITES</span>
     </a>
     <ul class="nav-links" role="list">
       <li><a href="${ROOT}index.html"           class="nav-link">Home</a></li>
@@ -35,7 +35,7 @@ document.getElementById('nav-placeholder').innerHTML = `
   <div class="mob-top">
     <a href="${ROOT}index.html" class="nav-brand mob-brand">
       <div class="nav-brand-mark">N</div>
-      NEXO<span style="color:var(--cyan)">SITES</span>
+      NEXO<span style="color:var(--purple-l)">SITES</span>
     </a>
     <button class="mob-close" id="mob-close" aria-label="Close menu">
       <i class="fas fa-times"></i>
@@ -71,7 +71,7 @@ document.getElementById('footer-placeholder').innerHTML = `
       <div class="footer-brand">
         <a href="${ROOT}index.html" class="nav-brand">
           <div class="nav-brand-mark">N</div>
-          NEXO<span style="color:var(--cyan)">SITES</span>
+          NEXO<span style="color:var(--purple-l)">SITES</span>
         </a>
         <p class="footer-brand-desc">Professional websites for businesses worldwide. Custom design, fast delivery, and ongoing support. You buy the domain — we handle everything else.</p>
         <div class="footer-socials">
@@ -111,7 +111,7 @@ document.getElementById('footer-placeholder').innerHTML = `
     </div>
     <div class="footer-bottom">
       <span>&copy; <span id="yr"></span> NexoSites. All rights reserved.</span>
-      <span>Serving clients <strong style="color:var(--cyan)">worldwide</strong> 🌍</span>
+      <span>Serving clients <strong style="color:var(--purple-l)">worldwide</strong> 🌍</span>
     </div>
   </div>
 </footer>`;
