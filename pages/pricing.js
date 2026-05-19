@@ -5,13 +5,13 @@
   const rateEl  = document.getElementById('rate-display');
   if (!btnZar || !btnUsd) return;
 
-  /* Try to fetch live USD/ZAR rate — fallback to 18.50 */
+  /* Try to fetch live USD/USD rate — fallback to 18.50 */
   let rate = 18.50;
   try {
     const res  = await fetch('https://open.er-api.com/v6/latest/USD');
     const data = await res.json();
-    if (data?.rates?.ZAR) {
-      rate = parseFloat(data.rates.ZAR.toFixed(2));
+    if (data?.rates?.USD) {
+      rate = parseFloat(data.rates.USD.toFixed(2));
     }
   } catch (_) { /* use fallback */ }
 
