@@ -3,14 +3,69 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="NexoSites creates premium, high-speed websites for businesses worldwide starting at just $55 USD. No upfront fees — pay only when you're satisfied." />
-  <meta name="keywords" content="web design, website development, business websites, affordable web development, professional websites, global web design" />
-  <meta property="og:title" content="NexoSites | Premium Business Websites Starting at $55 USD" />
-  <meta property="og:description" content="Get a modern, professional website for your business with no upfront payment. Love the result first, then pay." />
+
+  <!-- ══ PRIMARY SEO ══════════════════════════════════════════ -->
+  <title>NexoSites | Modern Web Development Agency</title>
+  <meta name="description" content="NexoSites builds modern, fast, scalable websites and web applications for businesses, creators, and brands."/>
+  <meta name="keywords" content="web development, web design, custom websites, frontend development, full stack development, SEO, responsive websites, business websites"/>
+  <meta name="author" content="NexoSites"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://nexosites.xyz/"/>
+
+  <!-- ══ OPEN GRAPH (Facebook, LinkedIn, Discord, WhatsApp) ═══ -->
   <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="NexoSites"/>
+  <meta property="og:title" content="NexoSites | Modern Web Development Agency"/>
+  <meta property="og:description" content="NexoSites builds modern, fast, scalable websites and web applications for businesses, creators, and brands."/>
   <meta property="og:url" content="https://nexosites.xyz/"/>
-  <title>NexoSites | Premium Business Websites from $55</title>
-  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+  <meta property="og:image" content="https://nexosites.xyz/assets/banner.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="NexoSites — Modern Web Development Agency"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!-- ══ TWITTER / X CARD ════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@nexosites"/>
+  <meta name="twitter:title" content="NexoSites | Modern Web Development Agency"/>
+  <meta name="twitter:description" content="NexoSites builds modern, fast, scalable websites and web applications for businesses, creators, and brands."/>
+  <meta name="twitter:image" content="https://nexosites.xyz/assets/banner.png"/>
+  <meta name="twitter:image:alt" content="NexoSites — Modern Web Development Agency"/>
+
+  <!-- ══ ICONS & MANIFEST ═════════════════════════════════════ -->
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+  <meta name="msapplication-TileImage" content="/assets/icons/logo.png"/>
+  <meta name="msapplication-TileColor" content="#6c47ff"/>
+
+  <!-- ══ STRUCTURED DATA / JSON-LD ════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NexoSites",
+    "url": "https://nexosites.xyz",
+    "logo": "https://nexosites.xyz/assets/icons/logo.png",
+    "image": "https://nexosites.xyz/assets/banner.png",
+    "description": "NexoSites builds modern, fast, scalable websites and web applications for businesses, creators, and brands.",
+    "priceRange": "$55 - $110",
+    "currenciesAccepted": "USD",
+    "serviceType": ["Web Development", "Web Design", "Frontend Development", "Landing Pages", "Business Websites"],
+    "areaServed": "Worldwide",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Support",
+      "availableLanguage": "English",
+      "url": "https://nexosites.xyz/pages/contact/"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- ══ FONTS & STYLES ════════════════════════════════════════ -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -20,14 +75,14 @@
 </head>
 <body>
 
-<div id="loader"><div class="loader-logo">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
 
 <div id="nav-placeholder"></div>
 
-<main>
+<main id="main-content">
 
 <!-- ══ HERO ══════════════════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
   <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="orb orb-a" aria-hidden="true"></div>
   <div class="orb orb-b" aria-hidden="true"></div>
@@ -38,7 +93,7 @@
       <div class="hero-badge">
         <span class="badge-dot"></span> Now open for new clients worldwide
       </div>
-      <h1 class="hero-title">
+      <h1 id="hero-heading" class="hero-title">
         <span class="line-clip">We Build Websites</span>
         <span class="line-clip d1">Your Customers</span>
         <span class="line-clip d2 gradient-text">Actually Trust.</span>
@@ -47,20 +102,20 @@
         Premium, fast, mobile-ready websites for businesses worldwide — starting from <strong>$55 USD</strong>. You buy the domain, we handle <strong>everything else</strong>. No upfront payment.
       </p>
       <div class="hero-actions">
-        <a href="pages/contact/" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Your Website</a>
-        <a href="pages/portfolio/" class="btn btn-ghost"><i class="fas fa-eye"></i> See Our Work</a>
+        <a href="pages/contact/" class="btn btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Get Your Website</a>
+        <a href="pages/portfolio/" class="btn btn-ghost"><i class="fas fa-eye" aria-hidden="true"></i> See Our Work</a>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats" aria-label="Agency statistics">
         <div class="hstat">
           <span class="hstat-n counter" data-to="50">0</span><span class="hstat-u">+</span>
           <span class="hstat-l">Sites Built</span>
         </div>
-        <div class="hstat-sep"></div>
+        <div class="hstat-sep" aria-hidden="true"></div>
         <div class="hstat">
           <span class="hstat-n counter" data-to="100">0</span><span class="hstat-u">%</span>
           <span class="hstat-l">Satisfaction</span>
         </div>
-        <div class="hstat-sep"></div>
+        <div class="hstat-sep" aria-hidden="true"></div>
         <div class="hstat">
           <span class="hstat-n counter" data-to="7">0</span><span class="hstat-u"> days</span>
           <span class="hstat-l">Avg Delivery</span>
@@ -68,7 +123,7 @@
       </div>
     </div>
 
-    <div class="hero-visual">
+    <div class="hero-visual" aria-hidden="true">
       <div class="mockup">
         <div class="mockup-bar">
           <div class="mock-dots"><i></i><i></i><i></i></div>
@@ -97,39 +152,39 @@
 </section>
 
 <!-- ══ VALUE STRIP ═══════════════════════════════════════════ -->
-<section class="value-strip">
+<section class="value-strip" aria-label="Key benefits">
   <div class="wrap">
     <div class="vs-grid">
-      <div class="vs-item reveal"><i class="fas fa-dollar-sign"></i><div><strong>From $55 USD</strong><span>No hidden fees</span></div></div>
-      <div class="vs-item reveal delay-1"><i class="fas fa-paint-brush"></i><div><strong>Custom Design</strong><span>Built for your brand</span></div></div>
-      <div class="vs-item reveal delay-2"><i class="fas fa-headset"></i><div><strong>Always Available</strong><span>Updates anytime</span></div></div>
-      <div class="vs-item reveal delay-3"><i class="fas fa-shield-alt"></i><div><strong>Pay When Happy</strong><span>Zero upfront risk</span></div></div>
+      <div class="vs-item reveal"><i class="fas fa-dollar-sign" aria-hidden="true"></i><div><strong>From $55 USD</strong><span>No hidden fees</span></div></div>
+      <div class="vs-item reveal delay-1"><i class="fas fa-paint-brush" aria-hidden="true"></i><div><strong>Custom Design</strong><span>Built for your brand</span></div></div>
+      <div class="vs-item reveal delay-2"><i class="fas fa-headset" aria-hidden="true"></i><div><strong>Always Available</strong><span>Updates anytime</span></div></div>
+      <div class="vs-item reveal delay-3"><i class="fas fa-shield-alt" aria-hidden="true"></i><div><strong>Pay When Happy</strong><span>Zero upfront risk</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- ══ REAL WORK PHOTOS ═══════════════════════════════════════ -->
-<section class="section" style="background:var(--dark);padding-bottom:2rem">
+<section class="section" style="background:var(--dark);padding-bottom:2rem" aria-labelledby="work-heading">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:2.5rem">
       <div class="eyebrow reveal" style="justify-content:center">What We Create</div>
-      <h2 class="section-heading reveal">Built for the <span class="gradient-text">Modern Web</span></h2>
+      <h2 id="work-heading" class="section-heading reveal">Built for the <span class="gradient-text">Modern Web</span></h2>
     </div>
     <div class="photos-strip">
       <div class="photo-card tilt-card reveal">
-        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80&auto=format&fit=crop" alt="Web design workspace" loading="lazy" width="600" height="450"/>
+        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80&auto=format&fit=crop" alt="Web design workspace showing a professional website layout" loading="lazy" width="600" height="450"/>
         <div class="photo-card-label">Web Design</div>
       </div>
       <div class="photo-card tilt-card reveal delay-1">
-        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80&auto=format&fit=crop" alt="Mobile responsive website" loading="lazy" width="600" height="450"/>
+        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80&auto=format&fit=crop" alt="Mobile-first responsive website displayed on a smartphone" loading="lazy" width="600" height="450"/>
         <div class="photo-card-label">Mobile First</div>
       </div>
       <div class="photo-card tilt-card reveal delay-2">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop" alt="Business analytics dashboard" loading="lazy" width="600" height="450"/>
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop" alt="Business analytics dashboard ready for launch" loading="lazy" width="600" height="450"/>
         <div class="photo-card-label">Business Ready</div>
       </div>
       <div class="photo-card tilt-card reveal delay-3">
-        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=600&q=80&auto=format&fit=crop" alt="Creative development" loading="lazy" width="600" height="450"/>
+        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=600&q=80&auto=format&fit=crop" alt="Creative web development process and coding" loading="lazy" width="600" height="450"/>
         <div class="photo-card-label">Creative Dev</div>
       </div>
     </div>
@@ -137,95 +192,95 @@
 </section>
 
 <!-- ══ HOW IT WORKS ═══════════════════════════════════════════ -->
-<section class="section" style="background:var(--dark)">
+<section class="section" style="background:var(--dark)" aria-labelledby="hiw-heading">
   <div class="wrap">
     <div class="two-col">
       <div>
         <div class="eyebrow reveal">How It Works</div>
-        <h2 class="section-heading reveal">We Make It <br/><span class="gradient-text">Effortless.</span></h2>
+        <h2 id="hiw-heading" class="section-heading reveal">We Make It <br/><span class="gradient-text">Effortless.</span></h2>
         <p class="section-lead reveal">Three simple steps — you focus on your business, we handle everything.</p>
-        <a href="pages/about.html" class="btn btn-ghost reveal" style="margin-top:2rem"><i class="fas fa-user"></i> About Us</a>
+        <a href="pages/about/" class="btn btn-ghost reveal" style="margin-top:2rem"><i class="fas fa-user" aria-hidden="true"></i> About Us</a>
       </div>
-      <div class="steps-list">
-        <div class="step-row reveal">
-          <div class="step-num">01</div>
+      <ol class="steps-list" aria-label="Our process">
+        <li class="step-row reveal">
+          <div class="step-num" aria-hidden="true">01</div>
           <div class="step-body">
-            <div class="step-ico"><i class="fas fa-globe"></i></div>
+            <div class="step-ico"><i class="fas fa-globe" aria-hidden="true"></i></div>
             <div><h3>Buy a Domain</h3><p>Purchase your domain from Namecheap or any registrar. We'll guide you. This is the <em>only</em> thing you do.</p></div>
           </div>
-        </div>
-        <div class="step-row reveal delay-1">
-          <div class="step-num">02</div>
+        </li>
+        <li class="step-row reveal delay-1">
+          <div class="step-num" aria-hidden="true">02</div>
           <div class="step-body">
-            <div class="step-ico"><i class="fas fa-magic"></i></div>
+            <div class="step-ico"><i class="fas fa-magic" aria-hidden="true"></i></div>
             <div><h3>We Build It</h3><p>We design and develop your entire website. No payment required at this stage — zero risk.</p></div>
           </div>
-        </div>
-        <div class="step-row reveal delay-2">
-          <div class="step-num">03</div>
+        </li>
+        <li class="step-row reveal delay-2">
+          <div class="step-num" aria-hidden="true">03</div>
           <div class="step-body">
-            <div class="step-ico"><i class="fas fa-check-circle"></i></div>
+            <div class="step-ico"><i class="fas fa-check-circle" aria-hidden="true"></i></div>
             <div><h3>You Approve &amp; Pay</h3><p>Happy with the result? Pay and we go live. Domain linked, SSL active, fully launched.</p></div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
 
 <!-- ══ SERVICES ═══════════════════════════════════════════════ -->
-<section class="section">
+<section class="section" aria-labelledby="services-heading">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:3rem">
       <div class="eyebrow reveal" style="justify-content:center">What We Build</div>
-      <h2 class="section-heading reveal">Our <span class="gradient-text">Services</span></h2>
+      <h2 id="services-heading" class="section-heading reveal">Our <span class="gradient-text">Services</span></h2>
     </div>
     <div class="srv-grid">
-      <a href="pages/services.html" class="srv-card card tilt-card reveal">
-        <div class="srv-ico"><i class="fas fa-building"></i></div>
+      <a href="pages/services/" class="srv-card card tilt-card reveal">
+        <div class="srv-ico"><i class="fas fa-building" aria-hidden="true"></i></div>
         <h3>Business Websites</h3>
         <p>Multi-page professional sites that convert visitors into customers.</p>
-        <span class="srv-more">Explore <i class="fas fa-arrow-right"></i></span>
+        <span class="srv-more">Explore <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
       </a>
-      <a href="pages/services.html" class="srv-card card tilt-card reveal delay-1">
-        <div class="srv-ico"><i class="fas fa-layer-group"></i></div>
+      <a href="pages/services/" class="srv-card card tilt-card reveal delay-1">
+        <div class="srv-ico"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
         <h3>Portfolio Sites</h3>
         <p>Showcase your work beautifully to clients and collaborators.</p>
-        <span class="srv-more">Explore <i class="fas fa-arrow-right"></i></span>
+        <span class="srv-more">Explore <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
       </a>
-      <a href="pages/services.html" class="srv-card card tilt-card reveal delay-2">
-        <div class="srv-ico"><i class="fas fa-bullseye"></i></div>
+      <a href="pages/services/" class="srv-card card tilt-card reveal delay-2">
+        <div class="srv-ico"><i class="fas fa-bullseye" aria-hidden="true"></i></div>
         <h3>Landing Pages</h3>
         <p>Single-page conversion machines built to get you leads and sales.</p>
-        <span class="srv-more">Explore <i class="fas fa-arrow-right"></i></span>
+        <span class="srv-more">Explore <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
       </a>
-      <a href="pages/services.html" class="srv-card card tilt-card reveal delay-3">
-        <div class="srv-ico"><i class="fas fa-tools"></i></div>
+      <a href="pages/services/" class="srv-card card tilt-card reveal delay-3">
+        <div class="srv-ico"><i class="fas fa-tools" aria-hidden="true"></i></div>
         <h3>Updates &amp; Maintenance</h3>
         <p>Changes to your existing site? Flat $16 per update request.</p>
-        <span class="srv-more">Explore <i class="fas fa-arrow-right"></i></span>
+        <span class="srv-more">Explore <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
       </a>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
-      <a href="pages/services.html" class="btn btn-primary reveal"><i class="fas fa-th-large"></i> All Services</a>
+      <a href="pages/services/" class="btn btn-primary reveal"><i class="fas fa-th-large" aria-hidden="true"></i> All Services</a>
     </div>
   </div>
 </section>
 
 <!-- ══ PRICING TEASER ════════════════════════════════════════ -->
-<section class="section" style="background:var(--dark)">
+<section class="section" style="background:var(--dark)" aria-labelledby="pricing-heading">
   <div class="wrap">
     <div class="pt-inner reveal">
       <div>
         <div class="eyebrow">Pricing</div>
-        <div class="pt-free-badge"><i class="fas fa-shield-alt"></i> No payment until you approve</div>
-        <h2 class="section-heading">Honest. <span class="gradient-text">Transparent.</span></h2>
+        <div class="pt-free-badge"><i class="fas fa-shield-alt" aria-hidden="true"></i> No payment until you approve</div>
+        <h2 id="pricing-heading" class="section-heading">Honest. <span class="gradient-text">Transparent.</span></h2>
         <p class="section-lead">New website from <strong style="color:#fff">$55 to $110 USD</strong>. Updates just <strong style="color:#fff">$16</strong> flat. We build first, you pay when you love it.</p>
-        <a href="pages/pricing/" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-tag"></i> Full Pricing</a>
+        <a href="pages/pricing/" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-tag" aria-hidden="true"></i> Full Pricing</a>
       </div>
       <div class="pt-cards">
         <div class="pt-card">
-          <div class="pt-card-icon"><i class="fas fa-rocket"></i></div>
+          <div class="pt-card-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
           <div>
             <div class="pt-card-label">New Website</div>
             <div class="pt-card-price gradient-text">$55 to $110</div>
@@ -233,7 +288,7 @@
           </div>
         </div>
         <div class="pt-card">
-          <div class="pt-card-icon"><i class="fas fa-edit"></i></div>
+          <div class="pt-card-icon"><i class="fas fa-edit" aria-hidden="true"></i></div>
           <div>
             <div class="pt-card-label">Update Request</div>
             <div class="pt-card-price gradient-text">$16</div>
@@ -246,43 +301,43 @@
 </section>
 
 <!-- ══ TESTIMONIALS ═══════════════════════════════════════════ -->
-<section class="section">
+<section class="section" aria-labelledby="reviews-heading">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:3rem">
       <div class="eyebrow reveal" style="justify-content:center">Reviews</div>
-      <h2 class="section-heading reveal">What Clients <span class="gradient-text">Say</span></h2>
+      <h2 id="reviews-heading" class="section-heading reveal">What Clients <span class="gradient-text">Say</span></h2>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card card tilt-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Seamless from start to finish. I got the domain, they did absolutely everything else. The result was beyond what I imagined."</p>
-        <div class="testi-author"><div class="testi-av">SP</div><div><strong>Sarah P.</strong><small>Business Owner, UK</small></div></div>
-      </div>
-      <div class="testi-card card tilt-card reveal delay-1">
-        <div class="testi-stars">★★★★</div>
-        <p class="testi-quote">"Customers constantly tell me how professional my site looks. Best investment I've made — and I didn't pay a cent until I approved it."</p>
-        <div class="testi-author"><div class="testi-av">JM</div><div><strong>James M.</strong><small>Restaurant Owner, USA</small></div></div>
-      </div>
-      <div class="testi-card card tilt-card reveal delay-2">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"$16 update requests are incredible value. I message them and changes are done same day. Absolutely world-class service."</p>
-        <div class="testi-author"><div class="testi-av">TN</div><div><strong>Thabo N.</strong><small>Photographer, Canada</small></div></div>
-      </div>
+    <div class="testi-grid" itemscope itemtype="https://schema.org/ItemList">
+      <article class="testi-card card tilt-card reveal" itemprop="itemListElement" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="testi-quote" itemprop="reviewBody">"Seamless from start to finish. I got the domain, they did absolutely everything else. The result was beyond what I imagined."</blockquote>
+        <div class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><div class="testi-av" aria-hidden="true">SP</div><div><strong itemprop="name">Sarah P.</strong><small>Business Owner, UK</small></div></div>
+      </article>
+      <article class="testi-card card tilt-card reveal delay-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="4 out of 5 stars">★★★★</div>
+        <blockquote class="testi-quote" itemprop="reviewBody">"Customers constantly tell me how professional my site looks. Best investment I've made — and I didn't pay a cent until I approved it."</blockquote>
+        <div class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><div class="testi-av" aria-hidden="true">JM</div><div><strong itemprop="name">James M.</strong><small>Restaurant Owner, USA</small></div></div>
+      </article>
+      <article class="testi-card card tilt-card reveal delay-2" itemprop="itemListElement" itemscope itemtype="https://schema.org/Review">
+        <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="testi-quote" itemprop="reviewBody">"$16 update requests are incredible value. I message them and changes are done same day. Absolutely world-class service."</blockquote>
+        <div class="testi-author" itemprop="author" itemscope itemtype="https://schema.org/Person"><div class="testi-av" aria-hidden="true">TN</div><div><strong itemprop="name">Thabo N.</strong><small>Photographer, Canada</small></div></div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ══ CTA BAND ═══════════════════════════════════════════════ -->
-<section class="cta-band">
+<section class="cta-band" aria-labelledby="cta-heading">
   <div class="cta-band-glow" aria-hidden="true"></div>
   <div class="wrap cta-band-inner reveal">
     <div>
-      <h2 class="section-heading" style="color:#fff">Ready to Go Online?</h2>
+      <h2 id="cta-heading" class="section-heading" style="color:#fff">Ready to Go Online?</h2>
       <p class="section-lead">No upfront cost. We build it, you approve it, then you pay.</p>
     </div>
     <div class="cta-band-btns">
-      <a href="pages/contact/" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start Free</a>
-      <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website." class="btn btn-ghost" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="pages/contact/" class="btn btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i> Start Free</a>
+      <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website." class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
   </div>
 </section>

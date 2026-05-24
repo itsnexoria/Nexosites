@@ -1,0 +1,4 @@
+# Redirect www to non-www (Cloudflare Pages)
+https://www.nexosites.xyz/* https://nexosites.xyz/:splat 301!
+
+# Redirect HTTP to HTTPS is handled by Cloudflare automatically

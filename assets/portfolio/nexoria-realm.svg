@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a18"/>
+      <stop offset="100%" style="stop-color:#0f0f2a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c47ff"/>
+      <stop offset="100%" style="stop-color:#00e5ff"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c47ff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#6c47ff;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <!-- BG -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid lines -->
+  <g stroke="#ffffff08" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Glow blob -->
+  <ellipse cx="600" cy="315" rx="350" ry="200" fill="url(#glow)"/>
+  <!-- Navbar -->
+  <rect x="0" y="0" width="1200" height="56" fill="#0d0d20" opacity="0.95"/>
+  <rect x="0" y="56" width="1200" height="1" fill="#6c47ff" opacity="0.4"/>
+  <!-- Logo text -->
+  <text x="40" y="37" fill="white" font-family="Arial Black" font-size="18" font-weight="900" letter-spacing="3">NEXORIA</text>
+  <!-- Nav items -->
+  <text x="320" y="37" fill="#aaa" font-family="Arial" font-size="13">Home</text>
+  <text x="390" y="37" fill="#aaa" font-family="Arial" font-size="13">Store</text>
+  <text x="450" y="37" fill="#aaa" font-family="Arial" font-size="13">Ranks</text>
+  <text x="520" y="37" fill="#aaa" font-family="Arial" font-size="13">Commands</text>
+  <text x="630" y="37" fill="#aaa" font-family="Arial" font-size="13">Rules</text>
+  <!-- CTA button -->
+  <rect x="1060" y="16" width="110" height="28" rx="14" fill="url(#accent)"/>
+  <text x="1115" y="34" fill="white" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">⚔ Join Now</text>
+  <!-- Hero badge -->
+  <rect x="490" y="88" width="220" height="24" rx="12" fill="#6c47ff22" stroke="#6c47ff44" stroke-width="1"/>
+  <text x="600" y="105" fill="#a78bfa" font-family="Arial" font-size="11" text-anchor="middle" font-weight="600">🌍 EU Survival SMP · Since 2024</text>
+  <!-- Hero heading -->
+  <text x="600" y="155" fill="white" font-family="Arial Black" font-size="52" font-weight="900" text-anchor="middle">NEXORIA</text>
+  <!-- Gradient text line -->
+  <defs>
+    <linearGradient id="textgrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6c47ff"/>
+      <stop offset="100%" style="stop-color:#00e5ff"/>
+    </linearGradient>
+  </defs>
+  <text x="600" y="200" fill="url(#textgrad)" font-family="Arial" font-size="22" text-anchor="middle" font-weight="600">Forge your legend. Build your empire.</text>
+  <!-- Server IP box -->
+  <rect x="430" y="225" width="340" height="42" rx="8" fill="#ffffff08" stroke="#ffffff15" stroke-width="1"/>
+  <text x="600" y="251" fill="#888" font-family="monospace" font-size="14" text-anchor="middle">play.nexoriarealm.xyz</text>
+  <!-- Action buttons -->
+  <rect x="420" y="285" width="140" height="38" rx="19" fill="url(#accent)"/>
+  <text x="490" y="309" fill="white" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">⚔ Join Now</text>
+  <rect x="575" y="285" width="140" height="38" rx="19" fill="transparent" stroke="#6c47ff" stroke-width="1.5"/>
+  <text x="645" y="309" fill="#a78bfa" font-family="Arial" font-size="13" text-anchor="middle">💬 Discord</text>
+  <!-- Stats bar -->
+  <rect x="100" y="370" width="1000" height="70" rx="10" fill="#ffffff04" stroke="#ffffff08" stroke-width="1"/>
+  <text x="250" y="400" fill="#00e5ff" font-family="Arial Black" font-size="20" text-anchor="middle" font-weight="900">🟢 Live</text>
+  <text x="250" y="420" fill="#666" font-family="Arial" font-size="12" text-anchor="middle">Players Online</text>
+  <line x1="450" y1="380" x2="450" y2="430" stroke="#ffffff10" stroke-width="1"/>
+  <text x="570" y="400" fill="white" font-family="Arial Black" font-size="18" text-anchor="middle">Europe</text>
+  <text x="570" y="420" fill="#666" font-family="Arial" font-size="12" text-anchor="middle">🌍 Region</text>
+  <line x1="700" y1="380" x2="700" y2="430" stroke="#ffffff10" stroke-width="1"/>
+  <text x="820" y="400" fill="white" font-family="Arial Black" font-size="18" text-anchor="middle">Survival SMP</text>
+  <text x="820" y="420" fill="#666" font-family="Arial" font-size="12" text-anchor="middle">⚔️ Mode</text>
+  <line x1="950" y1="380" x2="950" y2="430" stroke="#ffffff10" stroke-width="1"/>
+  <text x="1050" y="400" fill="white" font-family="Arial Black" font-size="18" text-anchor="middle">200</text>
+  <text x="1050" y="420" fill="#666" font-family="Arial" font-size="12" text-anchor="middle">🏆 Max Players</text>
+  <!-- Features row -->
+  <g>
+    <rect x="60" y="470" width="160" height="130" rx="10" fill="#111128" stroke="#6c47ff22" stroke-width="1"/>
+    <text x="140" y="510" fill="#6c47ff" font-size="24" text-anchor="middle">🏪</text>
+    <text x="140" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Economy Shop</text>
+    <text x="140" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">GUI-based market</text>
+    <rect x="248" y="470" width="160" height="130" rx="10" fill="#111128" stroke="#6c47ff22" stroke-width="1"/>
+    <text x="328" y="510" fill="#6c47ff" font-size="24" text-anchor="middle">⚔️</text>
+    <text x="328" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Skills &amp; RPG</text>
+    <text x="328" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">15+ levelling skills</text>
+    <rect x="436" y="470" width="160" height="130" rx="10" fill="#111128" stroke="#6c47ff22" stroke-width="1"/>
+    <text x="516" y="510" fill="#6c47ff" font-size="24" text-anchor="middle">🛡️</text>
+    <text x="516" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Land Claims</text>
+    <text x="516" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">GriefPrevention</text>
+    <rect x="624" y="470" width="160" height="130" rx="10" fill="#111128" stroke="#00e5ff22" stroke-width="1"/>
+    <text x="704" y="510" fill="#00e5ff" font-size="24" text-anchor="middle">🎁</text>
+    <text x="704" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Crates &amp; Cosmetics</text>
+    <text x="704" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">PhoenixCrates</text>
+    <rect x="812" y="470" width="160" height="130" rx="10" fill="#111128" stroke="#6c47ff22" stroke-width="1"/>
+    <text x="892" y="510" fill="#6c47ff" font-size="24" text-anchor="middle">🏅</text>
+    <text x="892" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Tags &amp; Ranks</text>
+    <text x="892" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">5 prestige tiers</text>
+    <rect x="1000" y="470" width="140" height="130" rx="10" fill="#111128" stroke="#6c47ff22" stroke-width="1"/>
+    <text x="1070" y="510" fill="#6c47ff" font-size="24" text-anchor="middle">🔒</text>
+    <text x="1070" y="535" fill="white" font-family="Arial" font-size="13" text-anchor="middle" font-weight="600">Anti-Cheat</text>
+    <text x="1070" y="555" fill="#555" font-family="Arial" font-size="11" text-anchor="middle">Vulcan</text>
+  </g>
+</svg>

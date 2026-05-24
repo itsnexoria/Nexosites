@@ -2,114 +2,313 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Portfolio | NexoSites Web Development</title>
-  <meta name="description" content="See our recent web development projects — business websites, portfolios, and landing pages built for businesses worldwide."/>
-  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml"/>
+  <title>Portfolio | NexoSites Web Development Agency</title>
+  <meta name="description" content="See our recent web development projects — business websites, gaming communities, healthcare platforms, and service sites built for real clients worldwide."/>
+  <meta name="keywords" content="web development, web design, custom websites, frontend development, full stack development, SEO, responsive websites, business websites"/>
+  <meta name="author" content="NexoSites"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/portfolio/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="NexoSites"/>
+  <meta property="og:title" content="Portfolio | NexoSites Web Development Agency"/>
+  <meta property="og:description" content="Real client projects built by NexoSites — see our work across gaming, healthcare, automotive, and service industries."/>
+  <meta property="og:url" content="https://nexosites.xyz/pages/portfolio/"/>
+  <meta property="og:image" content="https://nexosites.xyz/assets/banner.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="NexoSites — Modern Web Development Agency"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Portfolio | NexoSites Web Development Agency"/>
+  <meta name="twitter:description" content="Real client projects built by NexoSites — gaming, healthcare, automotive, and service industry websites."/>
+  <meta name="twitter:image" content="https://nexosites.xyz/assets/banner.png"/>
+  <meta name="twitter:image:alt" content="NexoSites — Modern Web Development Agency"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="shortcut icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
   <link rel="stylesheet" href="../../style.css"/>
   <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="portfolio.css"/>
 </head>
 <body>
-<div id="loader"><div class="loader-logo">N</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="loader" role="status" aria-label="Loading"><div class="loader-logo">N</div><div class="loader-track"><div class="loader-fill"></div></div></div>
 <div id="nav-placeholder"></div>
-<main>
 
-<section class="page-hero">
+<main id="main-content">
+
+<!-- ══ PAGE HERO ═══════════════════════════════════════════════ -->
+<section class="page-hero" aria-labelledby="port-page-h1">
   <div class="page-hero-grid" aria-hidden="true"></div>
   <div class="page-hero-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="eyebrow reveal" style="justify-content:center">Our Work</div>
-    <h1 class="section-heading reveal">Recent <span class="gradient-text">Projects</span></h1>
-    <p class="section-lead reveal" style="margin:1rem auto 0;text-align:center">A selection of websites we've built for our clients.</p>
+    <h1 id="port-page-h1" class="section-heading reveal">Real <span class="gradient-text">Client Projects</span></h1>
+    <p class="section-lead reveal" style="margin:1rem auto 0;text-align:center;max-width:560px">
+      Every project below is a live, production website — built and shipped by NexoSites for real businesses and communities.
+    </p>
+    <!-- Quick stats -->
+    <div class="port-hero-stats reveal">
+      <div class="phs-item">
+        <span class="phs-n">4</span>
+        <span class="phs-l">Live Projects</span>
+      </div>
+      <div class="phs-sep" aria-hidden="true"></div>
+      <div class="phs-item">
+        <span class="phs-n">3</span>
+        <span class="phs-l">Industries</span>
+      </div>
+      <div class="phs-sep" aria-hidden="true"></div>
+      <div class="phs-item">
+        <span class="phs-n">100%</span>
+        <span class="phs-l">Client Approved</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- ══ PORTFOLIO GRID ══════════════════════════════════════════ -->
+<section class="section" aria-label="Portfolio projects">
   <div class="wrap">
 
-    <!-- Filter Buttons -->
-    <div class="port-filters reveal">
-      <button class="pf-btn active" data-f="all">All</button>
-      <button class="pf-btn" data-f="business">Business</button>
-      <button class="pf-btn" data-f="portfolio">Portfolio</button>
-      <button class="pf-btn" data-f="landing">Landing Page</button>
+    <!-- Filter Bar -->
+    <div class="port-filters reveal" role="group" aria-label="Filter projects by category">
+      <button class="pf-btn active" data-f="all" aria-pressed="true">All Projects</button>
+      <button class="pf-btn" data-f="gaming" aria-pressed="false">Gaming</button>
+      <button class="pf-btn" data-f="healthcare" aria-pressed="false">Healthcare</button>
+      <button class="pf-btn" data-f="business" aria-pressed="false">Business</button>
     </div>
 
-    <!--
-    ============================================================
-    HOW TO ADD NEW PORTFOLIO ITEMS:
-    1. Copy a .port-card div below
-    2. Set data-cat to: business, portfolio, or landing
-    3. Set the background-image in .port-img style to your screenshot
-    4. Update the href in .port-link to the live URL
-    5. Update .port-type, h3, and p text
-    ============================================================
-    -->
     <div class="port-grid" id="port-grid">
 
-      <!-- ITEM 1 — replace values below -->
-      <div class="port-card card reveal" data-cat="business">
-        <div class="port-img" style="background:linear-gradient(135deg,#0f1a40,#1e3a8a);">
-          <div class="port-overlay">
-            <a href="#" class="port-link btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Site</a>
+      <!-- ══ PROJECT 1: Nexoria Realm ═══════════════════════════ -->
+      <article class="port-card reveal" data-cat="gaming" aria-label="Nexoria Realm project">
+        <div class="port-img-wrap">
+          <div class="port-preview">
+            <img
+              src="../../assets/portfolio/nexoria-realm.svg"
+              alt="Nexoria Realm — EU Minecraft Survival SMP website screenshot"
+              loading="lazy"
+              width="1200"
+              height="630"
+              class="port-screenshot"
+            />
           </div>
-          <div class="port-mock">
-            <div class="pm-bar"></div>
-            <div class="pm-h"></div>
-            <div class="pm-p"></div>
-            <div class="pm-cards"><span></span><span></span><span></span></div>
+          <div class="port-overlay">
+            <a href="https://nexoriarealm.xyz" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
+            </a>
+          </div>
+          <div class="port-badge-cat gaming">Gaming</div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta">
+            <h2 class="port-title">Nexoria Realm</h2>
+            <p class="port-desc">
+              A premium Minecraft Survival SMP community website for a European gaming server. Features a live player count, rank store integration, leaderboard, full navigation suite, and a Discord community hub. Dark, immersive design built to convert visitors into active players.
+            </p>
+          </div>
+          <div class="port-tags" aria-label="Technologies used">
+            <span class="ptag">HTML5</span>
+            <span class="ptag">CSS3</span>
+            <span class="ptag">JavaScript</span>
+            <span class="ptag">Responsive</span>
+            <span class="ptag">Gaming</span>
+          </div>
+          <div class="port-foot">
+            <a href="https://nexoriarealm.xyz" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
+            </a>
+            <span class="port-domain">nexoriarealm.xyz</span>
           </div>
         </div>
-        <div class="port-info">
-          <span class="port-type">Business</span>
-          <!-- Replace with real business name -->
-          <h3>Client Business Name</h3>
-          <!-- Replace with description -->
-          <p>A professional multi-page business website with service listings and integrated contact form.</p>
+      </article>
+
+      <!-- ══ PROJECT 2: Malariben ════════════════════════════════ -->
+      <article class="port-card reveal delay-1" data-cat="healthcare" aria-label="Malariben project">
+        <div class="port-img-wrap">
+          <div class="port-preview">
+            <img
+              src="../../assets/portfolio/malariben.svg"
+              alt="Malariben Home Health Care Pretoria — website screenshot"
+              loading="lazy"
+              width="1200"
+              height="630"
+              class="port-screenshot"
+            />
+          </div>
+          <div class="port-overlay">
+            <a href="https://griesel050-web.github.io/Malariben/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
+            </a>
+          </div>
+          <div class="port-badge-cat healthcare">Healthcare</div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta">
+            <h2 class="port-title">Malariben Home Care</h2>
+            <p class="port-desc">
+              A professional multi-page website for a Pretoria-based mobile home health care service. Includes service listings, business hours, a 5-star Google review showcase, and a direct booking contact form. Clean, trust-building design optimised for local SEO.
+            </p>
+          </div>
+          <div class="port-tags" aria-label="Technologies used">
+            <span class="ptag">HTML5</span>
+            <span class="ptag">CSS3</span>
+            <span class="ptag">JavaScript</span>
+            <span class="ptag">Multi-page</span>
+            <span class="ptag">Local SEO</span>
+          </div>
+          <div class="port-foot">
+            <a href="https://griesel050-web.github.io/Malariben/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
+            </a>
+            <span class="port-domain">malariben.co.za</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ══ PROJECT 3: Pretoria West Animal Clinic ═════════════ -->
+      <article class="port-card reveal delay-2" data-cat="business" aria-label="Pretoria West Animal Clinic project">
+        <div class="port-img-wrap">
+          <div class="port-preview">
+            <img
+              src="../../assets/portfolio/pta-animal-care.svg"
+              alt="Pretoria West Animal Clinic — veterinary website screenshot"
+              loading="lazy"
+              width="1200"
+              height="630"
+              class="port-screenshot"
+            />
+          </div>
+          <div class="port-overlay">
+            <a href="https://griesel050-web.github.io/Pta-animal-care/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
+            </a>
+          </div>
+          <div class="port-badge-cat business">Business</div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta">
+            <h2 class="port-title">Pretoria West Animal Clinic</h2>
+            <p class="port-desc">
+              A warm, professional website for a registered veterinary practice led by Dr Jafta Mokoele. Showcases services, team credentials, 66+ Google reviews, and a house-call booking flow. Designed to convert pet owners into long-term clients.
+            </p>
+          </div>
+          <div class="port-tags" aria-label="Technologies used">
+            <span class="ptag">HTML5</span>
+            <span class="ptag">CSS3</span>
+            <span class="ptag">JavaScript</span>
+            <span class="ptag">Multi-page</span>
+            <span class="ptag">Google Reviews</span>
+          </div>
+          <div class="port-foot">
+            <a href="https://griesel050-web.github.io/Pta-animal-care/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
+            </a>
+            <span class="port-domain">ptaanimalcare.co.za</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ══ PROJECT 4: Dixon's Repairs ═════════════════════════ -->
+      <article class="port-card reveal delay-3" data-cat="business" aria-label="Dixon's Repairs project">
+        <div class="port-img-wrap">
+          <div class="port-preview">
+            <img
+              src="../../assets/portfolio/dixons-repairs.svg"
+              alt="Dixon's Starter & Alternator Repairs — auto electrical website screenshot"
+              loading="lazy"
+              width="1200"
+              height="630"
+              class="port-screenshot"
+            />
+          </div>
+          <div class="port-overlay">
+            <a href="https://griesel050-web.github.io/Dixon-s-Repairs/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
+            </a>
+          </div>
+          <div class="port-badge-cat business">Business</div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta">
+            <h2 class="port-title">Dixon's Repairs</h2>
+            <p class="port-desc">
+              A bold, high-impact website for Pretoria's premier auto electrical workshop, specialising in starter motors and alternators. Displays a perfect 5-star Google rating, full service catalogue, interactive reviews, and clear workshop location — all designed to drive inbound enquiries.
+            </p>
+          </div>
+          <div class="port-tags" aria-label="Technologies used">
+            <span class="ptag">HTML5</span>
+            <span class="ptag">CSS3</span>
+            <span class="ptag">JavaScript</span>
+            <span class="ptag">Single-page</span>
+            <span class="ptag">5★ Reviews</span>
+          </div>
+          <div class="port-foot">
+            <a href="https://griesel050-web.github.io/Dixon-s-Repairs/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
+            </a>
+            <span class="port-domain">dixonsrepairs.co.za</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /port-grid -->
+  </div>
+</section>
+
+<!-- ══ PROCESS STRIP ══════════════════════════════════════════ -->
+<section class="port-process-strip" aria-labelledby="process-heading">
+  <div class="wrap">
+    <div class="pps-inner reveal">
+      <div class="pps-copy">
+        <div class="eyebrow">How We Work</div>
+        <h2 id="process-heading" class="section-heading">From idea to <span class="gradient-text">live site</span> in days.</h2>
+        <p class="section-lead">Every project above started with a single conversation. No upfront payment — you love it, then you pay.</p>
+      </div>
+      <div class="pps-steps">
+        <div class="pps-step">
+          <div class="pps-num">01</div>
+          <div><h3>Brief</h3><p>You tell us about your business. We handle the rest.</p></div>
+        </div>
+        <div class="pps-step">
+          <div class="pps-num">02</div>
+          <div><h3>Build</h3><p>We design and develop your full website — no cost yet.</p></div>
+        </div>
+        <div class="pps-step">
+          <div class="pps-num">03</div>
+          <div><h3>Launch</h3><p>Approve it, pay, go live. Your domain, your brand.</p></div>
         </div>
       </div>
-
-      <!-- ITEM 2 -->
-      <div class="port-card card reveal delay-1" data-cat="portfolio">
-        <div class="port-img" style="background:linear-gradient(135deg,#1a0f2e,#4c1d95);">
-          <div class="port-overlay">
-            <a href="#" class="port-link btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Site</a>
-          </div>
-          <div class="port-mock">
-            <div class="pm-bar"></div>
-            <div class="pm-gallery"><span></span><span></span><span></span><span></span></div>
-            <div class="pm-h"></div>
-          </div>
-        </div>
-        <div class="port-info">
-          <span class="port-type">Portfolio</span>
-          <h3>Photography Portfolio</h3>
-          <p>An elegant portfolio site for a photographer with gallery grid and lightbox viewer.</p>
-        </div>
-      </div>
-
-      <!-- ====================================================
-           ADD MORE ITEMS HERE — copy a .port-card block above
-      ==================================================== -->
-
     </div>
   </div>
 </section>
 
-<section class="inner-cta">
+<!-- ══ CTA ════════════════════════════════════════════════════ -->
+<section class="inner-cta" aria-labelledby="port-cta-h">
   <div class="wrap inner-cta-inner reveal">
-    <h2 class="section-heading">Want a Site <span class="gradient-text">Like These?</span></h2>
-    <p class="section-lead">Let's build something great for your business.</p>
-    <a href="../contact/" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-rocket"></i> Start Your Project</a>
+    <div>
+      <h2 id="port-cta-h" class="section-heading">Want a Site <span class="gradient-text">Like These?</span></h2>
+      <p class="section-lead">Let's build something great for your business — starting at just $55.</p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem">
+      <a href="../contact/" class="btn btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Start Your Project</a>
+      <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website." class="btn btn-ghost" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Us</a>
+    </div>
   </div>
 </section>
+
 </main>
+
 <div id="footer-placeholder"></div>
-<script src="../../nav-footer.js"></script>
-<script src="../../main.js"></script>
-<script src="portfolio.js"></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="portfolio.js" defer></script>
 </body>
 </html>

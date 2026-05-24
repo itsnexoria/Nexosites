@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="mbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1a14"/>
+      <stop offset="100%" style="stop-color:#0d1f1a"/>
+    </linearGradient>
+    <linearGradient id="maccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#mbg)"/>
+  <g stroke="#10b98110" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Hero image area -->
+  <rect x="660" y="70" width="500" height="360" rx="16" fill="#10b98110" stroke="#10b98125" stroke-width="1"/>
+  <text x="910" y="270" fill="#10b981" font-size="80" text-anchor="middle">🏥</text>
+  <text x="910" y="330" fill="#10b981" font-family="Arial" font-size="14" text-anchor="middle" opacity="0.5">Mobile Health Unit</text>
+  <!-- Nav -->
+  <rect x="0" y="0" width="1200" height="56" fill="#0d1f1a" opacity="0.98"/>
+  <rect x="0" y="56" width="1200" height="2" fill="#10b981" opacity="0.3"/>
+  <text x="40" y="37" fill="white" font-family="Arial" font-size="17" font-weight="700">Malariben</text>
+  <text x="230" y="37" fill="#aaa" font-family="Arial" font-size="13">Home</text>
+  <text x="290" y="37" fill="#aaa" font-family="Arial" font-size="13">About</text>
+  <text x="355" y="37" fill="#aaa" font-family="Arial" font-size="13">Services</text>
+  <text x="425" y="37" fill="#aaa" font-family="Arial" font-size="13">Reviews</text>
+  <rect x="1040" y="15" width="130" height="28" rx="14" fill="url(#maccent)"/>
+  <text x="1105" y="33" fill="white" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">Book a Visit →</text>
+  <!-- Badge -->
+  <rect x="40" y="82" width="200" height="24" rx="12" fill="#10b98115" stroke="#10b98130" stroke-width="1"/>
+  <text x="140" y="99" fill="#34d399" font-family="Arial" font-size="11" text-anchor="middle" font-weight="600">Pretoria's Trusted Home Care</text>
+  <!-- Hero heading -->
+  <text x="40" y="160" fill="white" font-family="Arial Black" font-size="42" font-weight="900">Health Care</text>
+  <text x="40" y="215" fill="#10b981" font-family="Arial" font-size="42" font-style="italic" font-weight="700">Delivered</text>
+  <text x="40" y="265" fill="white" font-family="Arial Black" font-size="42" font-weight="900">To Your Door</text>
+  <!-- Subtext -->
+  <text x="40" y="305" fill="#888" font-family="Arial" font-size="14" font-weight="400">Malariben brings professional, compassionate home</text>
+  <text x="40" y="325" fill="#888" font-family="Arial" font-size="14">health care directly to you across Pretoria.</text>
+  <!-- CTA Buttons -->
+  <rect x="40" y="350" width="160" height="40" rx="20" fill="url(#maccent)"/>
+  <text x="120" y="375" fill="white" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle">Book a Visit →</text>
+  <rect x="215" y="350" width="160" height="40" rx="20" fill="transparent" stroke="#10b981" stroke-width="1.5"/>
+  <text x="295" y="375" fill="#34d399" font-family="Arial" font-size="13" text-anchor="middle">📞 Call Us</text>
+  <!-- Rating -->
+  <rect x="40" y="410" width="180" height="50" rx="10" fill="#ffffff05" stroke="#10b98120" stroke-width="1"/>
+  <text x="55" y="432" fill="#fbbf24" font-family="Arial" font-size="14">★★★★☆</text>
+  <text x="55" y="452" fill="#888" font-family="Arial" font-size="11">4.0 / 5 · Google Rating</text>
+  <!-- Services mini cards -->
+  <rect x="40" y="490" width="1120" height="110" rx="12" fill="#0f2218" stroke="#10b98115" stroke-width="1"/>
+  <g>
+    <text x="180" y="530" fill="#10b981" font-size="22" text-anchor="middle">🩺</text>
+    <text x="180" y="552" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="600">Home Consultations</text>
+    <text x="180" y="568" fill="#555" font-family="Arial" font-size="10" text-anchor="middle">Full health assessments</text>
+    <line x1="320" y1="500" x2="320" y2="590" stroke="#ffffff08" stroke-width="1"/>
+    <text x="460" y="530" fill="#10b981" font-size="22" text-anchor="middle">💊</text>
+    <text x="460" y="552" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="600">Medication Management</text>
+    <text x="460" y="568" fill="#555" font-family="Arial" font-size="10" text-anchor="middle">Structured admin assistance</text>
+    <line x1="600" y1="500" x2="600" y2="590" stroke="#ffffff08" stroke-width="1"/>
+    <text x="740" y="530" fill="#10b981" font-size="22" text-anchor="middle">🩹</text>
+    <text x="740" y="552" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="600">Wound Care</text>
+    <text x="740" y="568" fill="#555" font-family="Arial" font-size="10" text-anchor="middle">Professional dressing</text>
+    <line x1="880" y1="500" x2="880" y2="590" stroke="#ffffff08" stroke-width="1"/>
+    <text x="1020" y="530" fill="#10b981" font-size="22" text-anchor="middle">📋</text>
+    <text x="1020" y="552" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="600">Health Monitoring</text>
+    <text x="1020" y="568" fill="#555" font-family="Arial" font-size="10" text-anchor="middle">Regular vitals + reporting</text>
+  </g>
+</svg>
