@@ -435,7 +435,7 @@ body.usd .price-usd { display:block }
 
 .ad-banner {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 }
