@@ -63,7 +63,8 @@
       </label>
     `).join('');
     el.querySelectorAll('.opt-card').forEach(card => {
-      card.addEventListener('click', () => {
+      const input = card.querySelector('input');
+      input.addEventListener('change', () => {
         state[group] = card.dataset.id;
         if (group === 'project_type') {
           const type = PROJECT_TYPES.find(t => t.id === card.dataset.id);
@@ -85,10 +86,12 @@
       </label>
     `).join('');
     el.querySelectorAll('.opt-card').forEach(card => {
-      card.addEventListener('click', () => {
+      const input = card.querySelector('input');
+      input.addEventListener('change', () => {
         const id = card.dataset.id;
         const idx = state.features.indexOf(id);
-        if (idx >= 0) state.features.splice(idx, 1); else state.features.push(id);
+        if (input.checked && idx < 0) state.features.push(id);
+        if (!input.checked && idx >= 0) state.features.splice(idx, 1);
         renderAll();
       });
     });

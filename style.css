@@ -88,6 +88,9 @@ body::before {
   pointer-events:none; z-index:0;
 }
 body > * { position:relative; z-index:1 }
+/* nav-placeholder must out-stack <main>/<footer> which come after it in the
+   DOM — without this, the fixed navbar renders behind page content */
+#nav-placeholder { z-index:999 }
 
 /* ── UTILS ───────────────────────────────────────────────────── */
 .wrap      { max-width:var(--max-w); margin:0 auto; padding:0 1.25rem }
