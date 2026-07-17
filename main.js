@@ -49,7 +49,7 @@ if (window.matchMedia('(hover:hover) and (min-width:768px)').matches) {
       const x = (e.clientX - r.left) / r.width  - 0.5;
       const y = (e.clientY - r.top)  / r.height - 0.5;
       card.style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateY(-6px)`;
-      card.style.boxShadow = `${-x*20}px ${y*20}px 50px rgba(124,58,237,.3)`;
+      card.style.boxShadow = `${-x*20}px ${y*20}px 50px rgba(79,195,232,.28)`;
     });
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';

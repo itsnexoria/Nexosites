@@ -2,3 +2,6 @@
 # set these up as a Redirect Rule / custom domain config in the dashboard
 # instead of here, since this Workers-based deploy only allows relative
 # paths in _redirects (absolute https://... sources are rejected).
+
+# Pricing page was replaced by the quote calculator
+/pages/pricing/* /pages/quote/ 301

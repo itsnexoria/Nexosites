@@ -4,8 +4,8 @@
   "description": "NexoSites builds modern, fast, scalable websites and web applications for businesses, creators, and brands.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#0a0a0f",
-  "theme_color": "#6c47ff",
+  "background_color": "#050D18",
+  "theme_color": "#0B1F3A",
   "icons": [
     {
       "src": "/assets/icons/logo.png",

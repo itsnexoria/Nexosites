@@ -43,7 +43,7 @@
     form.querySelectorAll('[data-fs-field]').forEach(field => {
       const invalid = field.getAttribute('aria-invalid') === 'true';
       field.style.borderColor = invalid ? 'var(--pink)' : '';
-      field.style.boxShadow   = invalid ? '0 0 0 3px rgba(236,72,153,.18)' : '';
+      field.style.boxShadow   = invalid ? '0 0 0 3px rgba(239,68,68,.22)' : '';
     });
   });
 

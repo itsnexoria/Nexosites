@@ -14,7 +14,6 @@ document.getElementById('nav-placeholder').innerHTML = `
       <li><a href="/"                    class="nav-link">Home</a></li>
       <li><a href="/pages/services/"     class="nav-link">Services</a></li>
       <li><a href="/pages/portfolio/"    class="nav-link">Portfolio</a></li>
-      <li><a href="/pages/pricing/"      class="nav-link">Pricing</a></li>
       <li><a href="/pages/about/"        class="nav-link">About</a></li>
       <li><a href="/pages/faq/"          class="nav-link">FAQ</a></li>
       <li id="nav-auth-slot"><a href="/pages/quote/" class="nav-link nav-cta">Get a Quote</a></li>
@@ -41,10 +40,9 @@ document.getElementById('nav-placeholder').innerHTML = `
     <a href="/"                 class="mob-link"><span class="mob-num">01</span><span class="mob-label">Home</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/services/"  class="mob-link"><span class="mob-num">02</span><span class="mob-label">Services</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/portfolio/" class="mob-link"><span class="mob-num">03</span><span class="mob-label">Portfolio</span><i class="fas fa-arrow-right mob-arrow"></i></a>
-    <a href="/pages/pricing/"   class="mob-link"><span class="mob-num">04</span><span class="mob-label">Pricing</span><i class="fas fa-arrow-right mob-arrow"></i></a>
-    <a href="/pages/about/"     class="mob-link"><span class="mob-num">05</span><span class="mob-label">About</span><i class="fas fa-arrow-right mob-arrow"></i></a>
-    <a href="/pages/faq/"       class="mob-link"><span class="mob-num">06</span><span class="mob-label">FAQ</span><i class="fas fa-arrow-right mob-arrow"></i></a>
-    <a href="/pages/login/"     class="mob-link" id="mob-auth-link"><span class="mob-num">07</span><span class="mob-label" id="mob-auth-label">Login</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+    <a href="/pages/about/"     class="mob-link"><span class="mob-num">04</span><span class="mob-label">About</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+    <a href="/pages/faq/"       class="mob-link"><span class="mob-num">05</span><span class="mob-label">FAQ</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+    <a href="/pages/login/"     class="mob-link" id="mob-auth-link"><span class="mob-num">06</span><span class="mob-label" id="mob-auth-label">Login</span><i class="fas fa-arrow-right mob-arrow"></i></a>
   </nav>
   <div class="mob-footer">
     <a href="/pages/quote/" class="btn btn-primary mob-cta" id="mob-auth-cta">
@@ -84,7 +82,7 @@ document.getElementById('footer-placeholder').innerHTML = `
           <li><a href="/">Home</a></li>
           <li><a href="/pages/services/">Services</a></li>
           <li><a href="/pages/portfolio/">Portfolio</a></li>
-          <li><a href="/pages/pricing/">Pricing</a></li>
+          <li><a href="/pages/quote/">Get a Quote</a></li>
           <li><a href="/pages/about/">About</a></li>
           <li><a href="/pages/faq/">FAQ</a></li>
           <li><a href="/pages/contact/">Contact</a></li>

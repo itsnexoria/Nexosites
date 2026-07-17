@@ -12,7 +12,7 @@
   padding: 1.5rem 2rem;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px;
+  border-radius: 3px;
   max-width: 540px;
   margin-inline: auto;
   margin-top: 2.5rem;
@@ -83,7 +83,7 @@
 .port-card {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 3px;
   overflow: hidden;
   transition: transform .35s var(--ease), border-color .35s, box-shadow .35s;
   display: flex;
@@ -226,7 +226,7 @@
 }
 .port-card:hover .ptag {
   color: var(--purple-l);
-  border-color: rgba(168,85,247,.25);
+  border-color: rgba(143,216,255,.22);
 }
 
 /* ── Card footer ────────────────────────────────────────────── */
@@ -282,7 +282,7 @@
   border: 1px solid rgba(108,71,255,.2);
   width: 38px;
   height: 38px;
-  border-radius: 8px;
+  border-radius: 2px;
   display: grid;
   place-items: center;
   flex-shrink: 0;

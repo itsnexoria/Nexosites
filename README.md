@@ -15,7 +15,6 @@ Nexosites-main/
 ├── style.css               # Global styles & design tokens
 ├── main.js                 # Scroll reveal, tilt, loader, navbar
 ├── nav-footer.js           # Shared nav & footer (injected into every page)
-├── pricing.js              # 🌍 Dynamic country-based currency pricing
 ├── robots.txt              # Search engine crawl rules
 ├── sitemap.xml             # XML sitemap for SEO
 ├── site.webmanifest        # PWA manifest
@@ -25,6 +24,8 @@ Nexosites-main/
 ├── assets/
 │   ├── banner.png          # OG / social share image (1200×630)
 │   ├── icons/              # favicon.svg, logo.png
+│   ├── css/app.css         # Auth/dashboard/quote/chat/admin component styles
+│   ├── js/supabase-client.js, auth.js  # Shared Supabase client + session helpers
 │   └── portfolio/          # SVG portfolio thumbnails
 └── pages/
     ├── home.css            # Homepage-specific styles
@@ -34,15 +35,43 @@ Nexosites-main/
     ├── contact/            # Contact page + contact.js (general inquiries)
     ├── faq/                # FAQ page + faq.js
     ├── portfolio/          # Portfolio page + portfolio.css + portfolio.js
-    ├── pricing/            # Pricing page (ballpark ranges + link to /quote/)
     ├── services/           # Services page
     ├── login/              # Client login
     ├── signup/             # Client signup
-    ├── quote/              # 🆕 Dynamic quote calculator (replaces fixed pricing)
-    ├── dashboard/          # 🆕 Customer dashboard (their orders)
-    ├── messages/           # 🆕 Customer ↔ you realtime chat
-    └── admin/              # 🆕 Your admin panel (orders + all customer chats)
+    ├── quote/              # Dynamic quote calculator (the only pricing now — no fixed tiers)
+    ├── dashboard/          # Customer dashboard (their orders)
+    ├── messages/           # Customer ↔ you realtime chat
+    └── admin/              # Your admin panel (orders + all customer chats)
 ```
+
+---
+
+## Design System — "Blueprint / Drafting Table"
+
+The site's visual theme: technical drawing sheets, not another dark-gradient SaaS look.
+Deep blueprint-navy panels, cyan linework, an amber "stamp" accent, dimension-line
+dividers instead of plain hairlines, sharp corners with small registration marks on
+cards, and a self-drawing SVG wireframe in the homepage hero (the "we draft your site"
+moment).
+
+All colors/fonts are CSS variables in `style.css` `:root` — change a value there and it
+cascades everywhere (including `assets/css/app.css`, which powers the auth/dashboard/
+quote/chat/admin pages):
+
+| Variable | Role |
+|---|---|
+| `--purple-l` | Primary accent — line cyan |
+| `--pink` | Secondary accent — stamp amber |
+| `--panel` / `--dark-2` | Card & panel background |
+| `--text` / `--text-2` / `--text-3` | Body / muted / faint text |
+| `--ff-h` | Display font (Space Grotesk) |
+| `--ff-b` | Body font (IBM Plex Sans) |
+| `--ff-m` | Monospace/label font (IBM Plex Mono) |
+| `--radius` | Corner radius used across cards/buttons (kept small — 2–3px) |
+
+`--ff-mono`/`--ff-display`/`--ff-body`/`--violet`/`--fast`/`--mid` are aliases kept
+for `pages/inner.css` and `pages/portfolio/portfolio.css`, which still reference the
+older naming — don't remove them unless those files are updated too.
 
 ---
 
@@ -101,34 +130,12 @@ tab of `/pages/admin/`, with unread indicators.
 
 ---
 
-## Dynamic Pricing (pricing.js)
+## Pricing is quote-only now
 
-Visitors automatically see prices in their local currency. No API key needed.
-
-**How it works:**
-1. On page load, `pricing.js` calls a free IP geolocation API (`ipapi.co`).
-2. It maps the visitor's country code to a currency (ZAR, GBP, EUR, AUD, etc.).
-3. It converts the USD base prices and updates every `[data-price]` element on the page.
-4. A small badge appears showing *"Prices shown in ZAR for South Africa"*.
-5. Falls back to USD silently if geolocation fails (no API, offline, etc.).
-
-**Adding or changing a currency/rate:**
-
-Open `pricing.js` and find the `regions` object. Each entry is:
-```js
-COUNTRY_CODE: ['CURRENCY_CODE', 'SYMBOL', MULTIPLIER_VS_USD, 'Country Name'],
-```
-Example — to add Brazil:
-```js
-BR: ['BRL', 'R$', 5.1, 'Brazil'],
-```
-Update multipliers periodically to match exchange rates.
-
-**Adding the dynamic pricing to a new page:**
-
-1. Add `<script src="/pricing.js" defer></script>` to the page's `<head>` or before `</body>`.
-2. Tag any price element with `data-price="site-low"`, `data-price="site-high"`,
-   `data-price="update"`, or `data-price="site-range"`.
+There is no fixed-price page anymore — `pricing.js` (the old IP-geolocation currency
+converter) and `/pages/pricing/` were both removed. The quote calculator
+(`pages/quote/quote.js`) is the only place prices are shown, and it's per-project rather
+than tiered. See "Dynamic pricing (quote calculator)" above for how to edit it.
 
 ---
 
