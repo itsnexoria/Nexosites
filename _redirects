@@ -1,4 +1,4 @@
-# Redirect www to non-www (Cloudflare Pages)
-https://www.nexosites.xyz/* https://nexosites.xyz/:splat 301!
-
-# Redirect HTTP to HTTPS is handled by Cloudflare automatically
+# www → apex and HTTP → HTTPS are both handled at the Cloudflare edge —
+# set these up as a Redirect Rule / custom domain config in the dashboard
+# instead of here, since this Workers-based deploy only allows relative
+# paths in _redirects (absolute https://... sources are rejected).
