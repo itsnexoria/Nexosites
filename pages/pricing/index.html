@@ -68,6 +68,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- NEW: INSTANT QUOTE BANNER -->
+<section class="section-sm" style="padding-top:0">
+  <div class="wrap">
+    <div class="card reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.8rem 2rem;border:1px solid var(--border-2)">
+      <div>
+        <h3 style="font-family:var(--ff-b);font-size:1.15rem;margin-bottom:.3rem">Prices below are ballpark ranges</h3>
+        <p style="color:var(--text-2);font-size:.92rem;margin:0">For an exact number based on your business size and features, use the instant quote calculator.</p>
+      </div>
+      <a href="../quote/" class="btn btn-primary" style="flex-shrink:0"><i class="fas fa-calculator"></i> Build My Quote</a>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING SECTION -->
 <section class="section">
   <div class="wrap">
@@ -113,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><i class="fas fa-check"></i> Social media links</li>
           <li><i class="fas fa-check"></i> Speed optimised</li>
         </ul>
-        <a href="../contact/" class="btn btn-primary btn-block">Get a Free Quote <i class="fas fa-arrow-right"></i></a>
+        <a href="../quote/" class="btn btn-primary btn-block">Get an Instant Quote <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <!-- Update Requests -->
@@ -244,7 +257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap inner-cta-inner reveal">
     <h2 class="section-heading">Like What You See? <span class="gradient-text">Let's Talk.</span></h2>
     <p class="section-lead">Get in touch for a free quote — no obligation, no upfront cost.</p>
-    <a href="../contact/" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-paper-plane"></i> Get Your Free Quote</a>
+    <a href="../quote/" class="btn btn-primary" style="margin-top:2rem"><i class="fas fa-paper-plane"></i> Get Your Instant Quote</a>
   </div>
 </section>
 
@@ -255,6 +268,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 <div id="footer-placeholder"></div>
 <script src="../../pricing.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
 <script src="../../nav-footer.js" defer></script>
 <script src="../../main.js" defer></script>
 <script src="../faq/faq.js" defer></script>

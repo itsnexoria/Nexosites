@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Dashboard | NexoSites Client Portal</title>
+  <meta name="description" content="Track your website project status, view quotes, and message your developer."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/dashboard/"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="../../style.css"/>
+  <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo-wrap"><div class="loader-ring"></div><div class="loader-ring-2"></div><img src="/assets/icons/logo.png" alt="" class="loader-logo-img" aria-hidden="true"/></div><div class="loader-wordmark">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="nav-placeholder"></div>
+<main>
+
+<section class="page-hero dash-hero">
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">Client Portal</div>
+    <h1 class="section-heading reveal" style="font-size:clamp(2rem,4vw,3rem)">Welcome back, <span class="gradient-text" id="dash-name">there</span></h1>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="wrap">
+
+    <div id="submitted-banner" class="auth-success" style="display:none;margin-bottom:2rem">
+      <i class="fas fa-check-circle"></i><span>Your quote request was submitted! We'll review it and get back to you here.</span>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-stat reveal"><div class="num" id="stat-total">0</div><div class="lbl">Total Projects</div></div>
+      <div class="dash-stat reveal delay-1"><div class="num" id="stat-active">0</div><div class="lbl">In Progress</div></div>
+      <div class="dash-stat reveal delay-2"><div class="num" id="stat-completed">0</div><div class="lbl">Completed</div></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+      <h2 class="section-heading reveal" style="font-size:1.5rem">Your Projects</h2>
+      <div style="display:flex;gap:.8rem">
+        <a href="/pages/messages/" class="btn btn-ghost"><i class="fas fa-comments"></i> Messages</a>
+        <a href="/pages/quote/" class="btn btn-primary"><i class="fas fa-plus"></i> New Quote</a>
+      </div>
+    </div>
+
+    <div class="order-list reveal" id="order-list">
+      <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i>Loading your projects…</div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="dashboard.js" defer></script>
+</body>
+</html>

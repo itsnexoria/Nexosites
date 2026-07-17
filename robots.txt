@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /pages/login/
+Disallow: /pages/signup/
+Disallow: /pages/dashboard/
+Disallow: /pages/messages/
+Disallow: /pages/admin/
 
 Sitemap: https://nexosites.xyz/sitemap.xml

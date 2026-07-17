@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Messages | NexoSites Client Portal</title>
+  <meta name="description" content="Chat directly with your NexoSites developer about your project."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/messages/"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="../../style.css"/>
+  <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo-wrap"><div class="loader-ring"></div><div class="loader-ring-2"></div><img src="/assets/icons/logo.png" alt="" class="loader-logo-img" aria-hidden="true"/></div><div class="loader-wordmark">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="nav-placeholder"></div>
+<main>
+
+<section class="page-hero section-sm">
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">Direct Line</div>
+    <h1 class="section-heading reveal">Chat With <span class="gradient-text">Your Developer</span></h1>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="wrap">
+    <div class="chat-panel reveal" style="height:65vh;min-height:460px">
+      <div class="chat-panel-head"><i class="fas fa-user-astronaut"></i> NexoSites Support</div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-empty"><i class="fas fa-circle-notch fa-spin"></i> Loading conversation…</div>
+      </div>
+      <div class="chat-input-row">
+        <textarea id="chat-input" rows="1" placeholder="Type a message…"></textarea>
+        <button id="chat-send-btn" class="btn btn-primary" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="messages.js" defer></script>
+</body>
+</html>

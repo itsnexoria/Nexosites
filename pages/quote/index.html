@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Get a Quote | NexoSites Web Development Agency</title>
+  <meta name="description" content="Get an instant, personalized price estimate for your website or web app based on your business size and the features you need."/>
+  <meta name="keywords" content="website quote, web development pricing, custom website cost"/>
+  <meta name="author" content="NexoSites"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/quote/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="NexoSites"/>
+  <meta property="og:title" content="Get a Quote | NexoSites Web Development Agency"/>
+  <meta property="og:description" content="Get an instant, personalized price estimate for your website or web app."/>
+  <meta property="og:url" content="https://nexosites.xyz/pages/quote/"/>
+  <meta property="og:image" content="https://nexosites.xyz/assets/banner.png"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="../../style.css"/>
+  <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo-wrap"><div class="loader-ring"></div><div class="loader-ring-2"></div><img src="/assets/icons/logo.png" alt="" class="loader-logo-img" aria-hidden="true"/></div><div class="loader-wordmark">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="nav-placeholder"></div>
+<main>
+
+<section class="page-hero section-sm">
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">Instant Estimate</div>
+    <h1 class="section-heading reveal">Build Your <span class="gradient-text">Quote</span></h1>
+    <p class="section-lead reveal" style="margin:1rem auto 0;text-align:center">
+      Pricing is based on your business size and the features you need — no fixed packages. Submit it and we'll confirm the final number.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="quote-layout">
+
+      <!-- ── LEFT: FORM STEPS ─────────────────────────────────── -->
+      <div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">1</span> What are we building?</h3>
+          <div class="opt-grid" id="project-type-grid" data-group="project_type"></div>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">2</span> Size of your business</h3>
+          <div class="opt-grid" id="business-size-grid" data-group="business_size"></div>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">3</span> How many pages?</h3>
+          <div class="pages-stepper">
+            <button type="button" id="pages-minus" aria-label="Decrease pages">−</button>
+            <span class="count" id="pages-count">3</span>
+            <button type="button" id="pages-plus" aria-label="Increase pages">+</button>
+          </div>
+          <p class="qs-note" style="margin-top:.8rem">Each project type includes a base number of pages — extra pages are billed on top.</p>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">4</span> Features you need</h3>
+          <div class="opt-grid" id="features-grid" data-group="features" data-multi="true"></div>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">5</span> Timeline</h3>
+          <div class="opt-grid" id="timeline-grid" data-group="timeline"></div>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">6</span> Ongoing maintenance <span style="color:var(--text-3);font-weight:400;font-size:.8rem">(optional, monthly)</span></h3>
+          <div class="opt-grid" id="maintenance-grid" data-group="maintenance_plan"></div>
+        </div>
+
+        <div class="quote-step reveal">
+          <h3><span class="qnum">7</span> Anything else?</h3>
+          <div class="fg" style="margin-bottom:0">
+            <textarea id="notes" rows="4" placeholder="Tell us about your business, existing branding, examples you like, deadlines…"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT: LIVE SUMMARY ──────────────────────────────── -->
+      <div class="quote-summary reveal" id="quote-summary">
+        <h3>Your Estimate</h3>
+        <div id="qs-lines"></div>
+        <div class="qs-total">
+          <span>One-time build</span>
+          <span class="amt" id="qs-total-amt">$0</span>
+        </div>
+        <div class="qs-line" id="qs-maintenance-line" style="display:none">
+          <span>Maintenance</span><span id="qs-maintenance-amt">$0/mo</span>
+        </div>
+
+        <div class="auth-error" id="quote-error" style="margin-top:1rem"><i class="fas fa-exclamation-circle"></i><span id="quote-error-msg"></span></div>
+
+        <button type="button" class="btn btn-primary btn-block" id="quote-submit-btn" style="margin-top:1.2rem">
+          <i class="fas fa-paper-plane"></i>
+          <span class="btn-label">Submit This Quote</span>
+          <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Submitting…</span>
+        </button>
+
+        <p class="qs-note" style="margin-top:1rem">
+          This is an instant estimate, not a final invoice. We'll review it and confirm the exact price with you before any work begins — no upfront payment.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="quote.js" defer></script>
+</body>
+</html>

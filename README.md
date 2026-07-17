@@ -31,12 +31,73 @@ Nexosites-main/
     ├── home.js             # Counter animation
     ├── inner.css           # Shared inner-page styles
     ├── about/              # About page
-    ├── contact/            # Contact page + contact.js
+    ├── contact/            # Contact page + contact.js (general inquiries)
     ├── faq/                # FAQ page + faq.js
     ├── portfolio/          # Portfolio page + portfolio.css + portfolio.js
-    ├── pricing/            # Pricing page (uses pricing.js)
-    └── services/           # Services page
+    ├── pricing/            # Pricing page (ballpark ranges + link to /quote/)
+    ├── services/           # Services page
+    ├── login/              # Client login
+    ├── signup/             # Client signup
+    ├── quote/              # 🆕 Dynamic quote calculator (replaces fixed pricing)
+    ├── dashboard/          # 🆕 Customer dashboard (their orders)
+    ├── messages/           # 🆕 Customer ↔ you realtime chat
+    └── admin/              # 🆕 Your admin panel (orders + all customer chats)
 ```
+
+---
+
+## 🆕 Client Platform (Auth, Orders, Realtime Chat)
+
+The site is now a full client platform on top of the marketing pages, powered by
+**Supabase** (free tier: Postgres + Auth + Realtime). Project name: **"Nexo Sites"**.
+
+### How it fits together
+- `assets/js/supabase-client.js` — the shared Supabase client (URL + anon key already filled in).
+- `assets/js/auth.js` — session helpers (`Auth.getSession()`, `Auth.getProfile()`, `Auth.requireAuth()`, `Auth.requireAdmin()`, `Auth.signOut()`).
+- `nav-footer.js` — nav now swaps Login/Signup for Dashboard/Messages/Logout automatically based on session, with a live unread-message badge.
+- `supabase/schema.sql` — full DB schema reference (already applied to the live project). Re-run only against a *fresh* Supabase project.
+
+### Database tables
+| Table | Purpose |
+|---|---|
+| `profiles` | One row per signed-up user (auto-created on signup via trigger). `role` is `customer` or `admin`. |
+| `orders` | Quote requests / projects — project type, size, features, price, status. |
+| `messages` | Realtime chat, one thread per customer (`customer_id`), sender can be the customer or you. |
+
+Row Level Security is on for all three tables — customers only ever see their own rows, you (as `admin`) see everything.
+
+### Making yourself the admin
+1. Sign up for an account on the live site like any customer would.
+2. In the Supabase dashboard → SQL Editor, run:
+   ```sql
+   update public.profiles set role = 'admin' where email = 'you@example.com';
+   ```
+3. Log out and back in — you'll be redirected to `/pages/admin/` instead of the customer dashboard.
+
+### Dynamic pricing (quote calculator)
+`pages/quote/quote.js` replaces fixed pricing tiers with a live calculator: project type,
+business size, page count, feature add-ons, timeline, and a maintenance plan all adjust
+the price in real time. Submitting it requires an account (visitors are sent to sign up
+first, and their in-progress quote is restored automatically after). It writes a row to
+`orders` with `status = 'pending_review'` — you then review it in `/pages/admin/` and set
+the real `final_price` and status.
+
+**Editing prices/features:** open `pages/quote/quote.js` and edit the `PROJECT_TYPES`,
+`BUSINESS_SIZES`, `FEATURES`, `TIMELINES`, or `MAINTENANCE` arrays at the top of the file.
+
+### Messaging
+Realtime via Supabase (`postgres_changes` subscriptions) — no polling. Customers get one
+thread with you at `/pages/messages/`; you see every customer's thread in the "Messages"
+tab of `/pages/admin/`, with unread indicators.
+
+### What's intentionally NOT built (still manual, still free)
+- **Payments** — no processor is wired up. Recommended flow: quote the customer in chat,
+  send them a PayPal.me or bank transfer link manually once they accept. Wiring up real
+  checkout (e.g. Stripe) would need a paid-ish setup or serverless functions — worth doing
+  later if volume justifies it.
+- **Email notifications** — customers/you won't get an email when a new message arrives;
+  you'll see it next time you open the dashboard. Supabase Edge Functions + Resend (free
+  tier) could add this later.
 
 ---
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin | NexoSites</title>
+  <meta name="description" content="NexoSites admin panel — manage orders and customer conversations."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/admin/"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#6c47ff"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="../../style.css"/>
+  <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo-wrap"><div class="loader-ring"></div><div class="loader-ring-2"></div><img src="/assets/icons/logo.png" alt="" class="loader-logo-img" aria-hidden="true"/></div><div class="loader-wordmark">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="nav-placeholder"></div>
+<main>
+
+<section class="page-hero dash-hero">
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal">Admin Panel</div>
+    <h1 class="section-heading reveal" style="font-size:clamp(2rem,4vw,3rem)">Agency <span class="gradient-text">Control Room</span></h1>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="wrap">
+
+    <div class="dash-grid">
+      <div class="dash-stat reveal"><div class="num" id="stat-customers">0</div><div class="lbl">Customers</div></div>
+      <div class="dash-stat reveal delay-1"><div class="num" id="stat-pending">0</div><div class="lbl">Pending Review</div></div>
+      <div class="dash-stat reveal delay-2"><div class="num" id="stat-inprogress">0</div><div class="lbl">In Progress</div></div>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" data-tab="orders">Orders</button>
+      <button class="tab-btn" data-tab="messages">Messages</button>
+    </div>
+
+    <!-- ── ORDERS TAB ────────────────────────────────────────── -->
+    <div id="tab-orders">
+      <div class="admin-table-wrap reveal" style="margin-bottom:2rem">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Customer</th><th>Type</th><th>Size</th><th>Status</th><th>Estimate</th><th>Submitted</th></tr>
+          </thead>
+          <tbody id="orders-tbody">
+            <tr><td colspan="6" style="text-align:center;color:var(--text-2)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="order-detail" style="display:none">
+        <h3 class="section-heading reveal" style="font-size:1.4rem;margin-bottom:1.2rem">Order Detail</h3>
+        <div class="admin-detail-grid">
+          <div class="detail-card reveal">
+            <h4>Request</h4>
+            <div id="detail-fields"></div>
+          </div>
+          <div class="detail-card reveal">
+            <h4>Manage</h4>
+            <div class="fg">
+              <label for="detail-status">Status</label>
+              <select id="detail-status">
+                <option value="pending_review">Pending Review</option>
+                <option value="quoted">Quoted</option>
+                <option value="accepted">Accepted</option>
+                <option value="in_progress">In Progress</option>
+                <option value="revision">Revision</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="detail-price">Final Price (USD)</label>
+              <input type="number" id="detail-price" placeholder="e.g. 350" min="0" step="1"/>
+            </div>
+            <button class="btn btn-primary btn-block" id="detail-save-btn">
+              <i class="fas fa-check"></i>
+              <span class="btn-label">Save Changes</span>
+              <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+            </button>
+            <button class="btn btn-ghost btn-block" id="detail-chat-btn" style="margin-top:.8rem">
+              <i class="fas fa-comments"></i> Message This Customer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MESSAGES TAB ──────────────────────────────────────── -->
+    <div id="tab-messages" style="display:none">
+      <div class="chat-shell reveal">
+        <div class="chat-list" id="admin-chat-list">
+          <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i>Loading customers…</div>
+        </div>
+        <div class="chat-panel">
+          <div class="chat-panel-head" id="admin-chat-head">Select a customer</div>
+          <div class="chat-messages" id="admin-chat-messages">
+            <div class="chat-empty"><i class="fas fa-hand-point-left"></i><p>Pick a customer on the left to start chatting.</p></div>
+          </div>
+          <div class="chat-input-row">
+            <textarea id="admin-chat-input" rows="1" placeholder="Type a message…" disabled></textarea>
+            <button id="admin-chat-send-btn" class="btn btn-primary" aria-label="Send message" disabled><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="admin.js" defer></script>
+</body>
+</html>
