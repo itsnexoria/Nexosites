@@ -41,12 +41,17 @@
       <div class="dash-stat reveal"><div class="num" id="stat-customers">0</div><div class="lbl">Customers</div></div>
       <div class="dash-stat reveal delay-1"><div class="num" id="stat-pending">0</div><div class="lbl">Pending Review</div></div>
       <div class="dash-stat reveal delay-2"><div class="num" id="stat-inprogress">0</div><div class="lbl">In Progress</div></div>
+      <div class="dash-stat reveal delay-3"><div class="num" id="stat-revenue">$0</div><div class="lbl">Revenue (completed)</div></div>
+      <div class="dash-stat reveal delay-4"><div class="num" id="stat-conversion">0%</div><div class="lbl">Quote → Accepted</div></div>
+      <div class="dash-stat reveal delay-5"><div class="num" id="stat-avg-order">$0</div><div class="lbl">Avg Order Value</div></div>
     </div>
 
     <div class="tabs reveal">
       <button class="tab-btn active" data-tab="orders">Orders</button>
       <button class="tab-btn" data-tab="messages">Messages</button>
       <button class="tab-btn" data-tab="portfolio">Portfolio</button>
+      <button class="tab-btn" data-tab="testimonials">Testimonials</button>
+      <button class="tab-btn" data-tab="faq">FAQ</button>
       <button class="tab-btn" data-tab="pricing">Pricing</button>
     </div>
 
@@ -194,6 +199,102 @@
               <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
             </button>
             <button class="btn btn-ghost" id="portfolio-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TESTIMONIALS TAB ──────────────────────────────────── -->
+    <div id="tab-testimonials" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+        <h3 class="section-heading reveal" style="font-size:1.4rem;margin:0">Testimonials</h3>
+        <button class="btn btn-primary" id="testi-add-btn"><i class="fas fa-plus"></i> Add Testimonial</button>
+      </div>
+
+      <div class="admin-table-wrap reveal" style="margin-bottom:2rem">
+        <table class="admin-table">
+          <thead><tr><th>Order</th><th>Author</th><th>Rating</th><th>Quote</th><th></th></tr></thead>
+          <tbody id="testi-tbody"><tr><td colspan="5" style="text-align:center;color:var(--text-2)">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div id="testi-form-wrap" style="display:none">
+        <div class="detail-card reveal">
+          <h4 id="testi-form-title">Add Testimonial</h4>
+          <input type="hidden" id="ts-id"/>
+          <div class="form-row">
+            <div class="fg">
+              <label for="ts-author">Author Name</label>
+              <input type="text" id="ts-author" placeholder="Sarah P."/>
+            </div>
+            <div class="fg">
+              <label for="ts-detail">Author Detail</label>
+              <input type="text" id="ts-detail" placeholder="Business Owner, UK"/>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="ts-quote">Quote</label>
+            <textarea id="ts-quote" rows="3" placeholder="What they said…"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="fg">
+              <label for="ts-rating">Rating (1-5)</label>
+              <input type="number" id="ts-rating" min="1" max="5" step="1" value="5"/>
+            </div>
+            <div class="fg">
+              <label for="ts-order">Display Order</label>
+              <input type="number" id="ts-order" min="0" step="1"/>
+            </div>
+          </div>
+          <div style="display:flex;gap:.8rem;margin-top:.5rem">
+            <button class="btn btn-primary" id="testi-save-btn">
+              <i class="fas fa-check"></i>
+              <span class="btn-label">Save Testimonial</span>
+              <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+            </button>
+            <button class="btn btn-ghost" id="testi-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FAQ TAB ───────────────────────────────────────────── -->
+    <div id="tab-faq" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+        <h3 class="section-heading reveal" style="font-size:1.4rem;margin:0">FAQ</h3>
+        <button class="btn btn-primary" id="faq-add-btn"><i class="fas fa-plus"></i> Add Question</button>
+      </div>
+
+      <div class="admin-table-wrap reveal" style="margin-bottom:2rem">
+        <table class="admin-table">
+          <thead><tr><th>Order</th><th>Question</th><th></th></tr></thead>
+          <tbody id="faq-tbody"><tr><td colspan="3" style="text-align:center;color:var(--text-2)">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div id="faq-form-wrap" style="display:none">
+        <div class="detail-card reveal">
+          <h4 id="faq-form-title">Add Question</h4>
+          <input type="hidden" id="fq-id"/>
+          <div class="fg">
+            <label for="fq-question">Question</label>
+            <input type="text" id="fq-question" placeholder="How long does it take?"/>
+          </div>
+          <div class="fg">
+            <label for="fq-answer">Answer</label>
+            <textarea id="fq-answer" rows="4" placeholder="The answer…"></textarea>
+          </div>
+          <div class="fg" style="max-width:160px">
+            <label for="fq-order">Display Order</label>
+            <input type="number" id="fq-order" min="0" step="1"/>
+          </div>
+          <div style="display:flex;gap:.8rem;margin-top:.5rem">
+            <button class="btn btn-primary" id="faq-save-btn">
+              <i class="fas fa-check"></i>
+              <span class="btn-label">Save Question</span>
+              <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+            </button>
+            <button class="btn btn-ghost" id="faq-cancel-btn">Cancel</button>
           </div>
         </div>
       </div>

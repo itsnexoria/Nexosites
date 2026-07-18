@@ -27,9 +27,11 @@
   function initials(name) { return (name || '?').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase(); }
 
   /* ── TABS ─────────────────────────────────────────────────── */
-  const TAB_IDS = ['orders', 'messages', 'portfolio', 'pricing'];
+  const TAB_IDS = ['orders', 'messages', 'portfolio', 'testimonials', 'faq', 'pricing'];
   let portfolioLoaded = false;
   let pricingLoaded = false;
+  let testimonialsLoaded = false;
+  let faqLoaded = false;
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -40,6 +42,8 @@
       });
       if (btn.dataset.tab === 'portfolio' && !portfolioLoaded) { portfolioLoaded = true; loadPortfolio(); }
       if (btn.dataset.tab === 'pricing' && !pricingLoaded) { pricingLoaded = true; loadPricingConfig(); }
+      if (btn.dataset.tab === 'testimonials' && !testimonialsLoaded) { testimonialsLoaded = true; loadTestimonials(); }
+      if (btn.dataset.tab === 'faq' && !faqLoaded) { faqLoaded = true; loadFaqItems(); }
     });
   });
 
@@ -77,6 +81,18 @@
 
     document.getElementById('stat-pending').textContent = orders.filter(o => o.status === 'pending_review').length;
     document.getElementById('stat-inprogress').textContent = orders.filter(o => o.status === 'in_progress').length;
+
+    const completed = orders.filter(o => o.status === 'completed');
+    const priced = orders.filter(o => o.final_price != null || o.estimated_price != null);
+    const acceptedOrBeyond = orders.filter(o => ['accepted', 'in_progress', 'revision', 'completed'].includes(o.status));
+
+    const revenue = completed.reduce((sum, o) => sum + Number(o.final_price ?? o.estimated_price ?? 0), 0);
+    const conversion = orders.length ? Math.round((acceptedOrBeyond.length / orders.length) * 100) : 0;
+    const avgOrder = priced.length ? priced.reduce((sum, o) => sum + Number(o.final_price ?? o.estimated_price ?? 0), 0) / priced.length : 0;
+
+    document.getElementById('stat-revenue').textContent = money(revenue);
+    document.getElementById('stat-conversion').textContent = conversion + '%';
+    document.getElementById('stat-avg-order').textContent = money(avgOrder);
   }
 
   function openOrderDetail(orderId) {
@@ -361,6 +377,186 @@
     const { error } = await window.sb.from('portfolio_projects').delete().eq('id', id);
     if (error) { alert('Could not delete: ' + error.message); return; }
     await loadPortfolio();
+  }
+
+  /* ── TESTIMONIALS CRUD ────────────────────────────────────── */
+  let testimonialItems = [];
+  let editingTestiId = null;
+
+  async function loadTestimonials() {
+    const tbody = document.getElementById('testi-tbody');
+    const { data, error } = await window.sb.from('testimonials').select('*').order('display_order', { ascending: true });
+    if (error) { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-2)">Couldn't load testimonials.</td></tr>`; return; }
+    testimonialItems = data || [];
+
+    if (!testimonialItems.length) {
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-2)">No testimonials yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = testimonialItems.map(t => `
+      <tr>
+        <td>${t.display_order}</td>
+        <td><strong>${escapeHtml(t.author_name)}</strong>${t.author_detail ? `<br><span style="color:var(--text-2);font-size:.8rem">${escapeHtml(t.author_detail)}</span>` : ''}</td>
+        <td>${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</td>
+        <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(t.quote)}</td>
+        <td style="white-space:nowrap">
+          <button class="btn btn-ghost" data-edit="${t.id}" style="padding:.4em .8em;font-size:.78rem"><i class="fas fa-pen"></i></button>
+          <button class="btn btn-ghost" data-del="${t.id}" style="padding:.4em .8em;font-size:.78rem;color:#ef4444"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    `).join('');
+
+    tbody.querySelectorAll('[data-edit]').forEach(btn => btn.addEventListener('click', () => openTestiForm(btn.dataset.edit)));
+    tbody.querySelectorAll('[data-del]').forEach(btn => btn.addEventListener('click', () => deleteTesti(btn.dataset.del)));
+  }
+
+  function openTestiForm(id) {
+    const wrap = document.getElementById('testi-form-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (id) {
+      const t = testimonialItems.find(x => x.id === id);
+      editingTestiId = id;
+      document.getElementById('testi-form-title').textContent = 'Edit Testimonial';
+      document.getElementById('ts-author').value = t.author_name || '';
+      document.getElementById('ts-detail').value = t.author_detail || '';
+      document.getElementById('ts-quote').value = t.quote || '';
+      document.getElementById('ts-rating').value = t.rating ?? 5;
+      document.getElementById('ts-order').value = t.display_order ?? 0;
+    } else {
+      editingTestiId = null;
+      document.getElementById('testi-form-title').textContent = 'Add Testimonial';
+      document.getElementById('ts-author').value = '';
+      document.getElementById('ts-detail').value = '';
+      document.getElementById('ts-quote').value = '';
+      document.getElementById('ts-rating').value = 5;
+      document.getElementById('ts-order').value = testimonialItems.length + 1;
+    }
+  }
+
+  document.getElementById('testi-add-btn').addEventListener('click', () => openTestiForm(null));
+  document.getElementById('testi-cancel-btn').addEventListener('click', () => {
+    document.getElementById('testi-form-wrap').style.display = 'none';
+  });
+
+  document.getElementById('testi-save-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('testi-save-btn');
+    const label = btn.querySelector('.btn-label'), sending = btn.querySelector('.btn-sending');
+    btn.disabled = true; label.style.display = 'none'; sending.style.display = 'inline-flex';
+
+    const payload = {
+      author_name: document.getElementById('ts-author').value.trim(),
+      author_detail: document.getElementById('ts-detail').value.trim() || null,
+      quote: document.getElementById('ts-quote').value.trim(),
+      rating: Math.min(5, Math.max(1, Number(document.getElementById('ts-rating').value) || 5)),
+      display_order: Number(document.getElementById('ts-order').value) || 0,
+    };
+
+    const query = editingTestiId
+      ? window.sb.from('testimonials').update(payload).eq('id', editingTestiId)
+      : window.sb.from('testimonials').insert(payload);
+    const { error } = await query;
+
+    btn.disabled = false; label.style.display = 'inline'; sending.style.display = 'none';
+    if (error) { alert('Could not save: ' + error.message); return; }
+
+    document.getElementById('testi-form-wrap').style.display = 'none';
+    await loadTestimonials();
+  });
+
+  async function deleteTesti(id) {
+    if (!confirm('Delete this testimonial? This cannot be undone.')) return;
+    const { error } = await window.sb.from('testimonials').delete().eq('id', id);
+    if (error) { alert('Could not delete: ' + error.message); return; }
+    await loadTestimonials();
+  }
+
+  /* ── FAQ CRUD ─────────────────────────────────────────────── */
+  let faqItemsList = [];
+  let editingFaqId = null;
+
+  async function loadFaqItems() {
+    const tbody = document.getElementById('faq-tbody');
+    const { data, error } = await window.sb.from('faq_items').select('*').order('display_order', { ascending: true });
+    if (error) { tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;color:var(--text-2)">Couldn't load FAQ items.</td></tr>`; return; }
+    faqItemsList = data || [];
+
+    if (!faqItemsList.length) {
+      tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;color:var(--text-2)">No FAQ items yet.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = faqItemsList.map(f => `
+      <tr>
+        <td>${f.display_order}</td>
+        <td>${escapeHtml(f.question)}</td>
+        <td style="white-space:nowrap">
+          <button class="btn btn-ghost" data-edit="${f.id}" style="padding:.4em .8em;font-size:.78rem"><i class="fas fa-pen"></i></button>
+          <button class="btn btn-ghost" data-del="${f.id}" style="padding:.4em .8em;font-size:.78rem;color:#ef4444"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    `).join('');
+
+    tbody.querySelectorAll('[data-edit]').forEach(btn => btn.addEventListener('click', () => openFaqForm(btn.dataset.edit)));
+    tbody.querySelectorAll('[data-del]').forEach(btn => btn.addEventListener('click', () => deleteFaqItem(btn.dataset.del)));
+  }
+
+  function openFaqForm(id) {
+    const wrap = document.getElementById('faq-form-wrap');
+    wrap.style.display = 'block';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (id) {
+      const f = faqItemsList.find(x => x.id === id);
+      editingFaqId = id;
+      document.getElementById('faq-form-title').textContent = 'Edit Question';
+      document.getElementById('fq-question').value = f.question || '';
+      document.getElementById('fq-answer').value = f.answer || '';
+      document.getElementById('fq-order').value = f.display_order ?? 0;
+    } else {
+      editingFaqId = null;
+      document.getElementById('faq-form-title').textContent = 'Add Question';
+      document.getElementById('fq-question').value = '';
+      document.getElementById('fq-answer').value = '';
+      document.getElementById('fq-order').value = faqItemsList.length + 1;
+    }
+  }
+
+  document.getElementById('faq-add-btn').addEventListener('click', () => openFaqForm(null));
+  document.getElementById('faq-cancel-btn').addEventListener('click', () => {
+    document.getElementById('faq-form-wrap').style.display = 'none';
+  });
+
+  document.getElementById('faq-save-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('faq-save-btn');
+    const label = btn.querySelector('.btn-label'), sending = btn.querySelector('.btn-sending');
+    btn.disabled = true; label.style.display = 'none'; sending.style.display = 'inline-flex';
+
+    const payload = {
+      question: document.getElementById('fq-question').value.trim(),
+      answer: document.getElementById('fq-answer').value.trim(),
+      display_order: Number(document.getElementById('fq-order').value) || 0,
+    };
+
+    const query = editingFaqId
+      ? window.sb.from('faq_items').update(payload).eq('id', editingFaqId)
+      : window.sb.from('faq_items').insert(payload);
+    const { error } = await query;
+
+    btn.disabled = false; label.style.display = 'inline'; sending.style.display = 'none';
+    if (error) { alert('Could not save: ' + error.message); return; }
+
+    document.getElementById('faq-form-wrap').style.display = 'none';
+    await loadFaqItems();
+  });
+
+  async function deleteFaqItem(id) {
+    if (!confirm('Delete this FAQ item? This cannot be undone.')) return;
+    const { error } = await window.sb.from('faq_items').delete().eq('id', id);
+    if (error) { alert('Could not delete: ' + error.message); return; }
+    await loadFaqItems();
   }
 
   /* ── PRICING CONFIG EDITOR ────────────────────────────────── */

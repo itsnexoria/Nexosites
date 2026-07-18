@@ -264,7 +264,7 @@ body > * { position:relative; z-index:1 }
   object-fit:contain; flex-shrink:0;
   display:block;
 }
-.nav-links { display:flex; align-items:center; gap:.15rem }
+.nav-links { display:none }
 .nav-link {
   font-size:.875rem; font-weight:500; color:var(--text-2);
   padding:.45rem .85rem; border-radius:var(--radius);
@@ -281,10 +281,10 @@ body > * { position:relative; z-index:1 }
 
 /* Hamburger */
 .hamburger {
-  display:none; flex-direction:column; justify-content:center; gap:5px;
+  display:flex; flex-direction:column; justify-content:center; gap:5px;
   width:42px; height:42px; padding:9px;
   border-radius:var(--radius); border:1px solid var(--border);
-  background:rgba(143,216,255,.06); flex-shrink:0;
+  background:rgba(143,216,255,.06); flex-shrink:0; position:relative;
   transition:background .2s, border-color .2s
 }
 .hamburger:hover { background:rgba(143,216,255,.14); border-color:var(--border-2) }
@@ -296,6 +296,11 @@ body > * { position:relative; z-index:1 }
 .hamburger.open .ham-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); background:var(--purple-l) }
 .hamburger.open .ham-bar:nth-child(2){ opacity:0; width:0 }
 .hamburger.open .ham-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); background:var(--purple-l) }
+.ham-unread-dot {
+  position:absolute; top:-4px; right:-4px; width:11px; height:11px; border-radius:50%;
+  background:var(--pink); border:2px solid var(--black); display:none;
+}
+.ham-unread-dot.show { display:block }
 
 /* Mobile drawer */
 .mob-backdrop {
@@ -440,8 +445,6 @@ body > * { position:relative; z-index:1 }
 }
 @media(max-width:768px) {
   :root { --nav-h:62px }
-  .nav-links { display:none }
-  .hamburger { display:flex }
   .section { padding:5rem 0 }
   .section-heading { font-size:clamp(2rem,9vw,2.8rem) }
   .footer-grid { grid-template-columns:1fr; gap:2rem }

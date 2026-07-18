@@ -140,8 +140,24 @@
   const errMsg      = document.getElementById('quote-error-msg');
   const STORAGE_KEY = 'nexosites_pending_quote';
 
+  const PAGE_LOADED_AT = Date.now();
+
   async function submitQuote() {
     errBox.style.display = 'none';
+
+    // Spam guards: honeypot field filled, or submitted implausibly fast
+    const honeypot = document.getElementById('website');
+    if (honeypot && honeypot.value.trim()) {
+      // Silently "succeed" for bots without actually submitting anything
+      window.location.href = '/pages/dashboard/?submitted=1';
+      return;
+    }
+    if (Date.now() - PAGE_LOADED_AT < 2500) {
+      errMsg.textContent = 'Please take a moment to review your quote before submitting.';
+      errBox.style.display = 'flex';
+      return;
+    }
+
     const session = await Auth.getSession();
 
     if (!session) {
@@ -177,7 +193,10 @@
     btnSending.style.display = 'none';
 
     if (error) {
-      errMsg.textContent = error.message || 'Could not submit your quote. Please try again.';
+      const isRateLimited = error.message && error.message.includes('rate_limit_exceeded');
+      errMsg.textContent = isRateLimited
+        ? "You've submitted several quotes recently — please wait a bit before submitting another, or message us directly if you need to make more changes."
+        : (error.message || 'Could not submit your quote. Please try again.');
       errBox.style.display = 'flex';
       return;
     }

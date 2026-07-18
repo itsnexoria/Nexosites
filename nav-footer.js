@@ -10,18 +10,11 @@ document.getElementById('nav-placeholder').innerHTML = `
       <img src="/assets/icons/logo.png" alt="NexoSites Logo" class="nav-brand-img"/>
       NEXO<span style="color:var(--purple-l)">SITES</span>
     </a>
-    <ul class="nav-links" role="list">
-      <li><a href="/"                    class="nav-link">Home</a></li>
-      <li><a href="/pages/services/"     class="nav-link">Services</a></li>
-      <li><a href="/pages/portfolio/"    class="nav-link">Portfolio</a></li>
-      <li><a href="/pages/about/"        class="nav-link">About</a></li>
-      <li><a href="/pages/faq/"          class="nav-link">FAQ</a></li>
-      <li id="nav-auth-slot"><a href="/pages/quote/" class="nav-link nav-cta">Get a Quote</a></li>
-    </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span class="ham-bar"></span>
       <span class="ham-bar"></span>
       <span class="ham-bar"></span>
+      <span class="ham-unread-dot" id="ham-unread-dot"></span>
     </button>
   </div>
 </nav>
@@ -36,13 +29,13 @@ document.getElementById('nav-placeholder').innerHTML = `
       <i class="fas fa-times"></i>
     </button>
   </div>
-  <nav class="mob-nav" aria-label="Mobile navigation">
+  <nav class="mob-nav" aria-label="Site navigation">
     <a href="/"                 class="mob-link"><span class="mob-num">01</span><span class="mob-label">Home</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/services/"  class="mob-link"><span class="mob-num">02</span><span class="mob-label">Services</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/portfolio/" class="mob-link"><span class="mob-num">03</span><span class="mob-label">Portfolio</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/about/"     class="mob-link"><span class="mob-num">04</span><span class="mob-label">About</span><i class="fas fa-arrow-right mob-arrow"></i></a>
     <a href="/pages/faq/"       class="mob-link"><span class="mob-num">05</span><span class="mob-label">FAQ</span><i class="fas fa-arrow-right mob-arrow"></i></a>
-    <a href="/pages/login/"     class="mob-link" id="mob-auth-link"><span class="mob-num">06</span><span class="mob-label" id="mob-auth-label">Login</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+    <div id="mob-auth-section"></div>
   </nav>
   <div class="mob-footer">
     <a href="/pages/quote/" class="btn btn-primary mob-cta" id="mob-auth-cta">
@@ -132,9 +125,8 @@ document.body.insertAdjacentHTML('beforeend', `
   const backdrop = document.getElementById('mob-backdrop');
   if (!ham || !menu) return;
 
-  const links = menu.querySelectorAll('.mob-link');
-
   function open() {
+    const links = menu.querySelectorAll('.mob-link');
     menu.classList.add('open');
     backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -149,6 +141,7 @@ document.body.insertAdjacentHTML('beforeend', `
   }
 
   function close() {
+    const links = menu.querySelectorAll('.mob-link');
     menu.classList.remove('open');
     backdrop.classList.remove('open');
     document.body.style.overflow = '';
@@ -159,10 +152,15 @@ document.body.insertAdjacentHTML('beforeend', `
     ham.focus();
   }
 
+  window.NexoNavClose = close;
+
   ham.addEventListener('click', open);
   closeBtn?.addEventListener('click', close);
   backdrop.addEventListener('click', close);
-  menu.querySelectorAll('.mob-link, .mob-cta').forEach(a => a.addEventListener('click', close));
+  menu.addEventListener('click', e => {
+    const target = e.target.closest('.mob-link, .mob-cta');
+    if (target) close();
+  });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) close(); });
 
   /* Focus trap */
@@ -179,34 +177,34 @@ document.body.insertAdjacentHTML('beforeend', `
 (async function () {
   if (!window.sb || !window.Auth) return; // supabase-client.js / auth.js not loaded on this page
 
-  const slot        = document.getElementById('nav-auth-slot');
-  const mobLink      = document.getElementById('mob-auth-link');
-  const mobLabel     = document.getElementById('mob-auth-label');
-  const mobCta       = document.getElementById('mob-auth-cta');
+  const authSection = document.getElementById('mob-auth-section');
+  const mobCta      = document.getElementById('mob-auth-cta');
+
+  function bindClose(el) {
+    el.addEventListener('click', () => { if (window.NexoNavClose) window.NexoNavClose(); });
+  }
 
   function renderLoggedOut() {
-    if (slot)      slot.innerHTML = '<a href="/pages/login/" class="nav-link">Login</a>';
-    if (mobLink)    mobLink.href = '/pages/login/';
-    if (mobLabel)   mobLabel.textContent = 'Login';
+    if (!authSection) return;
+    authSection.innerHTML = `
+      <a href="/pages/login/" class="mob-link"><span class="mob-num">06</span><span class="mob-label">Login</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+      <a href="/pages/signup/" class="mob-link"><span class="mob-num">07</span><span class="mob-label">Sign Up</span><i class="fas fa-arrow-right mob-arrow"></i></a>`;
+    authSection.querySelectorAll('.mob-link').forEach(bindClose);
   }
 
   function renderLoggedIn(profile) {
+    if (!authSection) return;
     const isAdmin = profile && profile.role === 'admin';
     const dashHref = isAdmin ? '/pages/admin/' : '/pages/dashboard/';
     const dashLabel = isAdmin ? 'Admin' : 'Dashboard';
-    if (slot) {
-      slot.innerHTML = `
-        <div class="nav-account" style="display:flex;align-items:center;gap:1rem">
-          <a href="${dashHref}" class="nav-link">${dashLabel}</a>
-          <a href="/pages/messages/" class="nav-link" style="position:relative">
-            Messages<span id="nav-unread-badge" style="display:none"></span>
-          </a>
-          <button id="nav-logout-btn" class="nav-link nav-cta" style="padding:.5em 1.2em">Log Out</button>
-        </div>`;
-      document.getElementById('nav-logout-btn')?.addEventListener('click', () => Auth.signOut());
-    }
-    if (mobLink)  mobLink.href = dashHref;
-    if (mobLabel) mobLabel.textContent = dashLabel;
+    authSection.innerHTML = `
+      <a href="${dashHref}" class="mob-link"><span class="mob-num">06</span><span class="mob-label">${dashLabel}</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+      <a href="/pages/messages/" class="mob-link"><span class="mob-num">07</span><span class="mob-label">Messages</span><span id="mob-unread-badge" style="display:none"></span><i class="fas fa-arrow-right mob-arrow"></i></a>
+      <a href="/pages/settings/" class="mob-link"><span class="mob-num">08</span><span class="mob-label">Settings</span><i class="fas fa-arrow-right mob-arrow"></i></a>
+      <button type="button" id="mob-logout-btn" class="mob-link" style="width:100%;text-align:left;cursor:pointer"><span class="mob-num">09</span><span class="mob-label">Log Out</span><i class="fas fa-arrow-right-from-bracket mob-arrow"></i></button>`;
+    authSection.querySelectorAll('.mob-link').forEach(bindClose);
+    document.getElementById('mob-logout-btn')?.addEventListener('click', () => Auth.signOut());
+
     if (mobCta) {
       mobCta.href = '/pages/messages/';
       mobCta.innerHTML = '<i class="fas fa-comments"></i> Messages';
@@ -223,10 +221,14 @@ document.body.insertAdjacentHTML('beforeend', `
       query = query.neq('sender_id', profile.id);
     }
     const { count } = await query;
-    const badge = document.getElementById('nav-unread-badge');
+
+    const dot = document.getElementById('ham-unread-dot');
+    if (dot) dot.classList.toggle('show', !!count);
+
+    const badge = document.getElementById('mob-unread-badge');
     if (badge && count) {
       badge.textContent = count > 9 ? '9+' : String(count);
-      badge.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:5px;background:var(--pink);color:#fff;font-size:.65rem;border-radius:99px;font-family:var(--ff-m)';
+      badge.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;margin-left:.5rem;background:var(--pink);color:#04121f;font-size:.68rem;font-weight:700;border-radius:99px;font-family:var(--ff-m)';
     }
   }
 

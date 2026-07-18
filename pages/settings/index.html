@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Account Settings | NexoSites Client Portal</title>
+  <meta name="description" content="Manage your NexoSites account details, email, and password."/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="canonical" href="https://nexosites.xyz/pages/settings/"/>
+  <link rel="icon" href="/assets/icons/logo.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="/assets/icons/logo.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <meta name="theme-color" content="#0B1F3A"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="../../style.css"/>
+  <link rel="stylesheet" href="../inner.css"/>
+  <link rel="stylesheet" href="/assets/css/app.css"/>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="Loading NexoSites"><div class="loader-logo-wrap"><div class="loader-ring"></div><div class="loader-ring-2"></div><img src="/assets/icons/logo.png" alt="" class="loader-logo-img" aria-hidden="true"/></div><div class="loader-wordmark">NEXOSITES</div><div class="loader-track"><div class="loader-fill"></div></div></div>
+<div id="nav-placeholder"></div>
+<main>
+
+<section class="page-hero section-sm">
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center">Client Portal</div>
+    <h1 class="section-heading reveal">Account <span class="gradient-text">Settings</span></h1>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="auth-wrap" style="max-width:560px">
+
+    <div class="auth-error" id="profile-error"><i class="fas fa-exclamation-circle"></i><span id="profile-error-msg"></span></div>
+    <div class="auth-success" id="profile-success"><i class="fas fa-check-circle"></i><span>Profile updated.</span></div>
+
+    <div class="auth-card card reveal" style="margin-bottom:1.5rem">
+      <h3 style="font-family:var(--ff-b);font-size:1.05rem;margin-bottom:1.2rem">Profile</h3>
+      <form id="profile-form">
+        <div class="form-row">
+          <div class="fg">
+            <label for="full_name">Your Name</label>
+            <input type="text" id="full_name" placeholder="John Smith"/>
+          </div>
+          <div class="fg">
+            <label for="company_name">Business Name</label>
+            <input type="text" id="company_name" placeholder="My Business"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="+1 555 000 0000"/>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="profile-save-btn">
+          <i class="fas fa-check"></i>
+          <span class="btn-label">Save Profile</span>
+          <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="auth-error" id="email-error"><i class="fas fa-exclamation-circle"></i><span id="email-error-msg"></span></div>
+    <div class="auth-success" id="email-success"><i class="fas fa-check-circle"></i><span>Check your new email address to confirm the change.</span></div>
+
+    <div class="auth-card card reveal" style="margin-bottom:1.5rem">
+      <h3 style="font-family:var(--ff-b);font-size:1.05rem;margin-bottom:1.2rem">Email Address</h3>
+      <form id="email-form">
+        <div class="fg">
+          <label for="new-email">Email</label>
+          <input type="email" id="new-email" placeholder="you@example.com" required/>
+        </div>
+        <button type="submit" class="btn btn-ghost btn-block" id="email-save-btn">
+          <i class="fas fa-envelope"></i>
+          <span class="btn-label">Update Email</span>
+          <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Sending…</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="auth-error" id="password-error"><i class="fas fa-exclamation-circle"></i><span id="password-error-msg"></span></div>
+    <div class="auth-success" id="password-success"><i class="fas fa-check-circle"></i><span>Password updated.</span></div>
+
+    <div class="auth-card card reveal">
+      <h3 style="font-family:var(--ff-b);font-size:1.05rem;margin-bottom:1.2rem">Password</h3>
+      <form id="password-form">
+        <div class="fg">
+          <label for="new-password">New Password</label>
+          <input type="password" id="new-password" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password"/>
+        </div>
+        <div class="fg">
+          <label for="confirm-password">Confirm New Password</label>
+          <input type="password" id="confirm-password" placeholder="Repeat password" minlength="6" required autocomplete="new-password"/>
+        </div>
+        <button type="submit" class="btn btn-ghost btn-block" id="password-save-btn">
+          <i class="fas fa-lock"></i>
+          <span class="btn-label">Update Password</span>
+          <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="/assets/js/supabase-client.js" defer></script>
+<script src="/assets/js/auth.js" defer></script>
+<script src="../../nav-footer.js" defer></script>
+<script src="../../main.js" defer></script>
+<script src="settings.js" defer></script>
+</body>
+</html>
