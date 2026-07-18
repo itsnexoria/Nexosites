@@ -49,4 +49,27 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io2.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => io2.observe(el));
+
+  // Structured data: reviews + aggregate rating, built from the same live data
+  const avgRating = (data.reduce((sum, t) => sum + t.rating, 0) / data.length).toFixed(1);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NexoSites",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": avgRating,
+      "reviewCount": data.length
+    },
+    "review": data.map(t => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t.author_name },
+      "reviewRating": { "@type": "Rating", "ratingValue": t.rating, "bestRating": 5 },
+      "reviewBody": t.quote
+    }))
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(jsonLd);
+  document.head.appendChild(script);
 })();

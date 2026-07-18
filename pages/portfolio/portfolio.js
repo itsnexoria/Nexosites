@@ -94,6 +94,7 @@
 
   async function init() {
     const grid = document.getElementById('port-grid');
+    if (!grid || !window.sb) return;
 
     const { data, error } = await window.sb
       .from('portfolio_projects')

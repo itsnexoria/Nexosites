@@ -152,7 +152,7 @@
       window.location.href = '/pages/dashboard/?submitted=1';
       return;
     }
-    if (Date.now() - PAGE_LOADED_AT < 2500) {
+    if (!quoteWasResumed && Date.now() - PAGE_LOADED_AT < 2500) {
       errMsg.textContent = 'Please take a moment to review your quote before submitting.';
       errBox.style.display = 'flex';
       return;
@@ -208,6 +208,7 @@
   submitBtn.addEventListener('click', submitQuote);
 
   // Resume a quote that was started before signing up
+  let quoteWasResumed = false;
   function resumePendingQuote() {
     const saved = sessionStorage.getItem(STORAGE_KEY);
     if (!saved) return;
@@ -216,6 +217,7 @@
       Object.assign(state, parsed);
       if (parsed.notes) document.getElementById('notes').value = parsed.notes;
       renderAll();
+      quoteWasResumed = true;
     } catch (_) { /* ignore malformed saved state */ }
   }
 
