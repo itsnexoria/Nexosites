@@ -1,44 +1,15 @@
 /* ================================================================
    quote.js — NexoSites dynamic quote calculator
+   Pricing is loaded from Supabase (pricing_config) so it can be
+   edited from the admin panel without a code change.
    ================================================================ */
 (function () {
 
-  const PROJECT_TYPES = [
-    { id: 'landing',   label: 'Landing Page',      desc: '1 goal, fast turnaround',        base: 60,  includedPages: 3  },
-    { id: 'business',  label: 'Business Website',  desc: 'Multi-page company site',        base: 120, includedPages: 6  },
-    { id: 'ecommerce', label: 'Online Store',      desc: 'Product catalog + checkout',     base: 280, includedPages: 8  },
-    { id: 'webapp',    label: 'Web Application',   desc: 'Custom logic, dashboards, auth', base: 450, includedPages: 10 },
-  ];
-
-  const BUSINESS_SIZES = [
-    { id: 'solo',       label: 'Solo / Freelancer',        desc: 'Just you',             mult: 1.0  },
-    { id: 'small',      label: 'Small Business',           desc: '2–10 people',          mult: 1.15 },
-    { id: 'medium',     label: 'Medium Business',          desc: '11–50 people',         mult: 1.35 },
-    { id: 'enterprise', label: 'Larger Company',           desc: '50+ people',           mult: 1.6  },
-  ];
-
-  const FEATURES = [
-    { id: 'accounts',   label: 'User Accounts / Login',        desc: 'Signup, login, profiles',        price: 65 },
-    { id: 'payments',   label: 'Payment Integration',           desc: 'Accept payments online',         price: 55 },
-    { id: 'booking',    label: 'Booking / Appointments',        desc: 'Scheduling system',              price: 60 },
-    { id: 'blog',       label: 'Blog / CMS',                    desc: 'Easily add new content',         price: 40 },
-    { id: 'multilang',  label: 'Multi-language',                desc: 'Site in 2+ languages',           price: 50 },
-    { id: 'animations', label: 'Advanced Animations',           desc: 'Custom motion & interactions',   price: 70 },
-    { id: 'seo',        label: 'SEO Optimization',               desc: 'Technical + on-page SEO',        price: 35 },
-    { id: 'copy',       label: 'Professional Copywriting',      desc: 'We write your content',          price: 45 },
-  ];
-
-  const TIMELINES = [
-    { id: 'standard', label: 'Standard', desc: '2–3 weeks',      mult: 1.0  },
-    { id: 'rush',     label: 'Rush',     desc: 'Under 1 week',   mult: 1.25 },
-  ];
-
-  const MAINTENANCE = [
-    { id: 'none',     label: 'None',      desc: 'No ongoing plan',            monthly: 0  },
-    { id: 'basic',    label: 'Basic',     desc: 'Small updates & monitoring', monthly: 10 },
-    { id: 'standard', label: 'Standard',  desc: 'Monthly updates & backups',  monthly: 25 },
-    { id: 'premium',  label: 'Premium',   desc: 'Priority support & changes', monthly: 50 },
-  ];
+  let PROJECT_TYPES = [];
+  let BUSINESS_SIZES = [];
+  let FEATURES = [];
+  let TIMELINES = [];
+  let MAINTENANCE = [];
 
   const state = {
     project_type: 'business',
@@ -161,8 +132,6 @@
     renderAll();
   });
 
-  renderAll();
-
   /* ── SUBMIT ─────────────────────────────────────────────────── */
   const submitBtn   = document.getElementById('quote-submit-btn');
   const btnLabel    = submitBtn.querySelector('.btn-label');
@@ -220,7 +189,7 @@
   submitBtn.addEventListener('click', submitQuote);
 
   // Resume a quote that was started before signing up
-  (function resumePendingQuote() {
+  function resumePendingQuote() {
     const saved = sessionStorage.getItem(STORAGE_KEY);
     if (!saved) return;
     try {
@@ -229,6 +198,42 @@
       if (parsed.notes) document.getElementById('notes').value = parsed.notes;
       renderAll();
     } catch (_) { /* ignore malformed saved state */ }
-  })();
+  }
+
+  /* ── LOAD PRICING CONFIG, THEN START ──────────────────────────── */
+  async function loadPricingConfigAndStart() {
+    const loadingEl = document.getElementById('quote-loading');
+    const layoutEl  = document.getElementById('quote-layout');
+
+    const { data, error } = await window.sb
+      .from('pricing_config')
+      .select('*')
+      .eq('id', 1)
+      .single();
+
+    if (error || !data) {
+      loadingEl.innerHTML = '<i class="fas fa-triangle-exclamation"></i><br>Couldn\'t load pricing. Please refresh the page.';
+      return;
+    }
+
+    PROJECT_TYPES = data.project_types;
+    BUSINESS_SIZES = data.business_sizes;
+    FEATURES = data.features;
+    TIMELINES = data.timelines;
+    MAINTENANCE = data.maintenance_plans;
+
+    state.project_type = PROJECT_TYPES[1]?.id || PROJECT_TYPES[0]?.id;
+    state.pages = PROJECT_TYPES.find(t => t.id === state.project_type)?.includedPages || 1;
+    state.business_size = BUSINESS_SIZES[0]?.id;
+    state.timeline = TIMELINES[0]?.id;
+    state.maintenance_plan = MAINTENANCE[0]?.id;
+
+    loadingEl.style.display = 'none';
+    layoutEl.style.display = '';
+    renderAll();
+    resumePendingQuote();
+  }
+
+  loadPricingConfigAndStart();
 
 })();

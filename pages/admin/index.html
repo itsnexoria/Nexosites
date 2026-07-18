@@ -46,6 +46,8 @@
     <div class="tabs reveal">
       <button class="tab-btn active" data-tab="orders">Orders</button>
       <button class="tab-btn" data-tab="messages">Messages</button>
+      <button class="tab-btn" data-tab="portfolio">Portfolio</button>
+      <button class="tab-btn" data-tab="pricing">Pricing</button>
     </div>
 
     <!-- ── ORDERS TAB ────────────────────────────────────────── -->
@@ -115,6 +117,94 @@
             <button id="admin-chat-send-btn" class="btn btn-primary" aria-label="Send message" disabled><i class="fas fa-paper-plane"></i></button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ── PORTFOLIO TAB ─────────────────────────────────────── -->
+    <div id="tab-portfolio" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+        <h3 class="section-heading reveal" style="font-size:1.4rem;margin:0">Portfolio Projects</h3>
+        <button class="btn btn-primary" id="portfolio-add-btn"><i class="fas fa-plus"></i> Add Project</button>
+      </div>
+
+      <div class="admin-table-wrap reveal" style="margin-bottom:2rem">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Order</th><th>Title</th><th>Category</th><th>Live URL</th><th></th></tr>
+          </thead>
+          <tbody id="portfolio-tbody">
+            <tr><td colspan="5" style="text-align:center;color:var(--text-2)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="portfolio-form-wrap" style="display:none">
+        <div class="detail-card reveal">
+          <h4 id="portfolio-form-title">Add Project</h4>
+          <input type="hidden" id="pf-id"/>
+          <div class="form-row">
+            <div class="fg">
+              <label for="pf-title">Title</label>
+              <input type="text" id="pf-title" placeholder="Client Business Name"/>
+            </div>
+            <div class="fg">
+              <label for="pf-category">Category</label>
+              <input type="text" id="pf-category" placeholder="business, gaming, healthcare…"/>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="pf-description">Description</label>
+            <textarea id="pf-description" rows="3" placeholder="What the site does and who it's for…"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="fg">
+              <label for="pf-image">Image URL</label>
+              <input type="text" id="pf-image" placeholder="/assets/portfolio/my-project.svg or https://…"/>
+            </div>
+            <div class="fg">
+              <label for="pf-live-url">Live Site URL</label>
+              <input type="text" id="pf-live-url" placeholder="https://clientsite.com"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="fg">
+              <label for="pf-domain">Domain Label</label>
+              <input type="text" id="pf-domain" placeholder="clientsite.com"/>
+            </div>
+            <div class="fg">
+              <label for="pf-order">Display Order</label>
+              <input type="number" id="pf-order" placeholder="1" min="0" step="1"/>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="pf-tags">Tags (comma-separated)</label>
+            <input type="text" id="pf-tags" placeholder="HTML5, CSS3, Responsive"/>
+          </div>
+          <div style="display:flex;gap:.8rem;margin-top:.5rem">
+            <button class="btn btn-primary" id="portfolio-save-btn">
+              <i class="fas fa-check"></i>
+              <span class="btn-label">Save Project</span>
+              <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+            </button>
+            <button class="btn btn-ghost" id="portfolio-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PRICING TAB ───────────────────────────────────────── -->
+    <div id="tab-pricing" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem">
+        <h3 class="section-heading reveal" style="font-size:1.4rem;margin:0">Quote Calculator Pricing</h3>
+        <button class="btn btn-primary" id="pricing-save-btn">
+          <i class="fas fa-check"></i>
+          <span class="btn-label">Save All Pricing</span>
+          <span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Saving…</span>
+        </button>
+      </div>
+      <p class="qs-note reveal" style="margin-bottom:1.5rem">Changes here update the live quote calculator immediately for every visitor.</p>
+      <div id="pricing-editor">
+        <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i>Loading pricing config…</div>
       </div>
     </div>
 

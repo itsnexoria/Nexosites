@@ -46,7 +46,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="portfolio.css"/>
 </head>
 <body>
-  
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDWSHHLW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -70,12 +69,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Quick stats -->
     <div class="port-hero-stats reveal">
       <div class="phs-item">
-        <span class="phs-n">4</span>
+        <span class="phs-n" id="phs-count">4</span>
         <span class="phs-l">Live Projects</span>
       </div>
       <div class="phs-sep" aria-hidden="true"></div>
       <div class="phs-item">
-        <span class="phs-n">3</span>
+        <span class="phs-n" id="phs-industries">3</span>
         <span class="phs-l">Industries</span>
       </div>
       <div class="phs-sep" aria-hidden="true"></div>
@@ -91,188 +90,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="section" aria-label="Portfolio projects">
   <div class="wrap">
 
-    <!-- Filter Bar -->
-    <div class="port-filters reveal" role="group" aria-label="Filter projects by category">
+    <!-- Filter Bar (built from live categories) -->
+    <div class="port-filters reveal" id="port-filters" role="group" aria-label="Filter projects by category">
       <button class="pf-btn active" data-f="all" aria-pressed="true">All Projects</button>
-      <button class="pf-btn" data-f="gaming" aria-pressed="false">Gaming</button>
-      <button class="pf-btn" data-f="healthcare" aria-pressed="false">Healthcare</button>
-      <button class="pf-btn" data-f="business" aria-pressed="false">Business</button>
     </div>
 
     <div class="port-grid" id="port-grid">
-
-      <!-- ══ PROJECT 1: Nexoria Realm ═══════════════════════════ -->
-      <article class="port-card reveal" data-cat="gaming" aria-label="Nexoria Realm project">
-        <div class="port-img-wrap">
-          <div class="port-preview">
-            <img
-              src="../../assets/portfolio/nexoria-realm.svg"
-              alt="Nexoria Realm — EU Minecraft Survival SMP website screenshot"
-              loading="lazy"
-              width="1200"
-              height="630"
-              class="port-screenshot"
-            />
-          </div>
-          <div class="port-overlay">
-            <a href="https://nexoriarealm.xyz" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
-            </a>
-          </div>
-          <div class="port-badge-cat gaming">Gaming</div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta">
-            <h2 class="port-title">Nexoria Realm</h2>
-            <p class="port-desc">
-              A premium Minecraft Survival SMP community website for a European gaming server. Features a live player count, rank store integration, leaderboard, full navigation suite, and a Discord community hub. Dark, immersive design built to convert visitors into active players.
-            </p>
-          </div>
-          <div class="port-tags" aria-label="Technologies used">
-            <span class="ptag">HTML5</span>
-            <span class="ptag">CSS3</span>
-            <span class="ptag">JavaScript</span>
-            <span class="ptag">Responsive</span>
-            <span class="ptag">Gaming</span>
-          </div>
-          <div class="port-foot">
-            <a href="https://nexoriarealm.xyz" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
-            </a>
-            <span class="port-domain">nexoriarealm.xyz</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ══ PROJECT 2: Malariben ════════════════════════════════ -->
-      <article class="port-card reveal delay-1" data-cat="healthcare" aria-label="Malariben project">
-        <div class="port-img-wrap">
-          <div class="port-preview">
-            <img
-              src="../../assets/portfolio/malariben.svg"
-              alt="Malariben Home Health Care Pretoria — website screenshot"
-              loading="lazy"
-              width="1200"
-              height="630"
-              class="port-screenshot"
-            />
-          </div>
-          <div class="port-overlay">
-            <a href="https://griesel050-web.github.io/Malariben/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
-            </a>
-          </div>
-          <div class="port-badge-cat healthcare">Healthcare</div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta">
-            <h2 class="port-title">Malariben Home Care</h2>
-            <p class="port-desc">
-              A professional multi-page website for a Pretoria-based mobile home health care service. Includes service listings, business hours, a 5-star Google review showcase, and a direct booking contact form. Clean, trust-building design optimised for local SEO.
-            </p>
-          </div>
-          <div class="port-tags" aria-label="Technologies used">
-            <span class="ptag">HTML5</span>
-            <span class="ptag">CSS3</span>
-            <span class="ptag">JavaScript</span>
-            <span class="ptag">Multi-page</span>
-            <span class="ptag">Local SEO</span>
-          </div>
-          <div class="port-foot">
-            <a href="https://griesel050-web.github.io/Malariben/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
-            </a>
-            <span class="port-domain">malariben.co.za</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ══ PROJECT 3: Pretoria West Animal Clinic ═════════════ -->
-      <article class="port-card reveal delay-2" data-cat="business" aria-label="Pretoria West Animal Clinic project">
-        <div class="port-img-wrap">
-          <div class="port-preview">
-            <img
-              src="../../assets/portfolio/pta-animal-care.svg"
-              alt="Pretoria West Animal Clinic — veterinary website screenshot"
-              loading="lazy"
-              width="1200"
-              height="630"
-              class="port-screenshot"
-            />
-          </div>
-          <div class="port-overlay">
-            <a href="https://griesel050-web.github.io/Pta-animal-care/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
-            </a>
-          </div>
-          <div class="port-badge-cat business">Business</div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta">
-            <h2 class="port-title">Pretoria West Animal Clinic</h2>
-            <p class="port-desc">
-              A warm, professional website for a registered veterinary practice led by Dr Jafta Mokoele. Showcases services, team credentials, 66+ Google reviews, and a house-call booking flow. Designed to convert pet owners into long-term clients.
-            </p>
-          </div>
-          <div class="port-tags" aria-label="Technologies used">
-            <span class="ptag">HTML5</span>
-            <span class="ptag">CSS3</span>
-            <span class="ptag">JavaScript</span>
-            <span class="ptag">Multi-page</span>
-            <span class="ptag">Google Reviews</span>
-          </div>
-          <div class="port-foot">
-            <a href="https://griesel050-web.github.io/Pta-animal-care/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
-            </a>
-            <span class="port-domain">ptaanimalcare.co.za</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- ══ PROJECT 4: Dixon's Repairs ═════════════════════════ -->
-      <article class="port-card reveal delay-3" data-cat="business" aria-label="Dixon's Repairs project">
-        <div class="port-img-wrap">
-          <div class="port-preview">
-            <img
-              src="../../assets/portfolio/dixons-repairs.svg"
-              alt="Dixon's Starter & Alternator Repairs — auto electrical website screenshot"
-              loading="lazy"
-              width="1200"
-              height="630"
-              class="port-screenshot"
-            />
-          </div>
-          <div class="port-overlay">
-            <a href="https://griesel050-web.github.io/Dixon-s-Repairs/" class="port-cta-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Live Site
-            </a>
-          </div>
-          <div class="port-badge-cat business">Business</div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta">
-            <h2 class="port-title">Dixon's Repairs</h2>
-            <p class="port-desc">
-              A bold, high-impact website for Pretoria's premier auto electrical workshop, specialising in starter motors and alternators. Displays a perfect 5-star Google rating, full service catalogue, interactive reviews, and clear workshop location — all designed to drive inbound enquiries.
-            </p>
-          </div>
-          <div class="port-tags" aria-label="Technologies used">
-            <span class="ptag">HTML5</span>
-            <span class="ptag">CSS3</span>
-            <span class="ptag">JavaScript</span>
-            <span class="ptag">Single-page</span>
-            <span class="ptag">5★ Reviews</span>
-          </div>
-          <div class="port-foot">
-            <a href="https://griesel050-web.github.io/Dixon-s-Repairs/" class="btn btn-primary port-btn" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Site
-            </a>
-            <span class="port-domain">dixonsrepairs.co.za</span>
-          </div>
-        </div>
-      </article>
-
+      <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i>Loading projects…</div>
     </div><!-- /port-grid -->
   </div>
 </section>
