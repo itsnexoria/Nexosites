@@ -105,21 +105,19 @@
       return;
     }
 
+    const categories = [...new Set(data.map(p => p.category).filter(Boolean))];
+    const countEl = document.getElementById('phs-count');
+    const indEl   = document.getElementById('phs-industries');
+    if (countEl) countEl.textContent = data.length;
+    if (indEl)   indEl.textContent = categories.length;
+
     if (!data.length) {
       grid.innerHTML = `<div class="empty-state"><i class="fas fa-folder-open"></i>No projects published yet — check back soon.</div>`;
       return;
     }
 
     grid.innerHTML = data.map((p, i) => cardHTML(p, i)).join('');
-
-    const categories = [...new Set(data.map(p => p.category).filter(Boolean))];
     wireFilters(categories);
-
-    const countEl = document.getElementById('phs-count');
-    const indEl   = document.getElementById('phs-industries');
-    if (countEl) countEl.textContent = data.length;
-    if (indEl)   indEl.textContent = categories.length;
-
     observeReveals(grid);
   }
 

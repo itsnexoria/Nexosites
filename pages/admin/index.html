@@ -158,8 +158,15 @@
           </div>
           <div class="form-row">
             <div class="fg">
-              <label for="pf-image">Image URL</label>
+              <label for="pf-image">Image</label>
               <input type="text" id="pf-image" placeholder="/assets/portfolio/my-project.svg or https://…"/>
+              <div style="display:flex;align-items:center;gap:.8rem;margin-top:.5rem">
+                <input type="file" id="pf-image-file" accept="image/*" style="display:none"/>
+                <button type="button" class="btn btn-ghost" id="pf-image-upload-btn" style="padding:.5em 1em;font-size:.8rem">
+                  <i class="fas fa-upload"></i> <span class="btn-label">Upload Image</span><span class="btn-sending" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Uploading…</span>
+                </button>
+                <span id="pf-image-preview" style="font-size:.78rem;color:var(--text-2)"></span>
+              </div>
             </div>
             <div class="fg">
               <label for="pf-live-url">Live Site URL</label>

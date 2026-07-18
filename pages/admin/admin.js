@@ -274,6 +274,8 @@
     const wrap = document.getElementById('portfolio-form-wrap');
     wrap.style.display = 'block';
     wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('pf-image-preview').textContent = '';
+    document.getElementById('pf-image-file').value = '';
 
     if (id) {
       const p = portfolioItems.find(x => x.id === id);
@@ -298,6 +300,32 @@
   document.getElementById('portfolio-add-btn').addEventListener('click', () => openPortfolioForm(null));
   document.getElementById('portfolio-cancel-btn').addEventListener('click', () => {
     document.getElementById('portfolio-form-wrap').style.display = 'none';
+  });
+
+  document.getElementById('pf-image-upload-btn').addEventListener('click', () => {
+    document.getElementById('pf-image-file').click();
+  });
+
+  document.getElementById('pf-image-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const btn = document.getElementById('pf-image-upload-btn');
+    const label = btn.querySelector('.btn-label'), sending = btn.querySelector('.btn-sending');
+    btn.disabled = true; label.style.display = 'none'; sending.style.display = 'inline-flex';
+
+    const ext = file.name.split('.').pop();
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+
+    const { error } = await window.sb.storage.from('portfolio-images').upload(path, file, { upsert: false });
+
+    btn.disabled = false; label.style.display = 'inline'; sending.style.display = 'none';
+
+    if (error) { alert('Upload failed: ' + error.message); return; }
+
+    const { data } = window.sb.storage.from('portfolio-images').getPublicUrl(path);
+    document.getElementById('pf-image').value = data.publicUrl;
+    document.getElementById('pf-image-preview').textContent = 'Uploaded ✓';
   });
 
   document.getElementById('portfolio-save-btn').addEventListener('click', async () => {
@@ -366,23 +394,23 @@
   function renderPricingEditor() {
     const c = pricingConfig;
     document.getElementById('pricing-editor').innerHTML = `
-      <div class="detail-card reveal" style="margin-bottom:1.5rem">
+      <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Project Types</h4>
         <div id="pc-project-types">${pricingGroupTable(c.project_types, [{key:'base',label:'Base $'},{key:'includedPages',label:'Incl. Pages'}])}</div>
       </div>
-      <div class="detail-card reveal" style="margin-bottom:1.5rem">
+      <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Business Size Multipliers</h4>
         <div id="pc-business-sizes">${pricingGroupTable(c.business_sizes, [{key:'mult',label:'× Multiplier'}])}</div>
       </div>
-      <div class="detail-card reveal" style="margin-bottom:1.5rem">
+      <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Features (add-on price)</h4>
         <div id="pc-features">${pricingGroupTable(c.features, [{key:'price',label:'+ $'}])}</div>
       </div>
-      <div class="detail-card reveal" style="margin-bottom:1.5rem">
+      <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Timeline Multipliers</h4>
         <div id="pc-timelines">${pricingGroupTable(c.timelines, [{key:'mult',label:'× Multiplier'}])}</div>
       </div>
-      <div class="detail-card reveal">
+      <div class="detail-card">
         <h4>Maintenance Plans (monthly)</h4>
         <div id="pc-maintenance">${pricingGroupTable(c.maintenance_plans, [{key:'monthly',label:'$ / month'}])}</div>
       </div>

@@ -49,7 +49,7 @@ document.getElementById('nav-placeholder').innerHTML = `
       <i class="fas fa-rocket"></i> Get a Quote
     </a>
     <div class="mob-contacts">
-      <a href="mailto:griesel050@gmail.com"><i class="fas fa-envelope"></i> griesel050@gmail.com</a>
+      <a href="mailto:support@nexorealm.org"><i class="fas fa-envelope"></i> support@nexorealm.org</a>
       <a href="https://wa.me/27816137187" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
     </div>
   </div>
@@ -99,14 +99,18 @@ document.getElementById('footer-placeholder').innerHTML = `
       </div>
       <div class="footer-col">
         <h5>Contact</h5>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:griesel050@gmail.com">griesel050@gmail.com</a></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:support@nexorealm.org">support@nexorealm.org</a></div>
         <div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+27816137187">+27 81 613 7187</a></div>
         <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/27816137187" target="_blank" rel="noopener">WhatsApp Us</a></div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; <span id="yr"></span> NexoSites. All rights reserved.</span>
-      <span>Serving clients <strong style="color:var(--purple-l)">worldwide</strong> 🌍</span>
+      <span style="display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap">
+        <a href="/pages/terms/" style="color:var(--text-3)">Terms of Service</a>
+        <a href="/pages/privacy/" style="color:var(--text-3)">Privacy Policy</a>
+        <span>Serving clients <strong style="color:var(--purple-l)">worldwide</strong> 🌍</span>
+      </span>
     </div>
   </div>
 </footer>`;

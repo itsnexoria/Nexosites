@@ -222,5 +222,5 @@ Then ping Google: `https://www.google.com/ping?sitemap=https://nexosites.xyz/sit
 
 ## Contact
 
-- **Email:** griesel050@gmail.com  
+- **Email:** support@nexorealm.org  
 - **WhatsApp:** +27 81 613 7187

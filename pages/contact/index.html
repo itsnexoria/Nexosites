@@ -88,24 +88,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CONTACT SECTION -->
 <section class="section">
   <div class="wrap">
-    <div class="contact-grid">
-
-      <!-- ── INFO COLUMN ─────────────────────────────────────── -->
-      <div class="contact-info">
-        <div class="eyebrow reveal">Reach Out</div>
+    <div class="contact-info" style="max-width:640px;margin:0 auto;text-align:center">
+        <div class="eyebrow reveal" style="justify-content:center">Reach Out</div>
         <h2 class="section-heading reveal" style="font-size:clamp(2rem,4vw,3rem)">
           We'd Love to <span class="gradient-text">Hear From You</span>
         </h2>
-        <p class="section-lead reveal" style="margin-bottom:2.5rem">
+        <p class="section-lead reveal" style="margin:0 auto 2.5rem;text-align:center">
           Whether you're ready to start or just have questions — get in touch and we'll find the best solution for your business.
         </p>
 
         <div class="contact-methods">
-          <a href="mailto:griesel050@gmail.com" class="cm-card card reveal">
+          <a href="mailto:support@nexorealm.org" class="cm-card card reveal">
             <div class="cm-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <span class="cm-label">Email</span>
-              <span class="cm-value">griesel050@gmail.com</span>
+              <span class="cm-value">support@nexorealm.org</span>
             </div>
           </a>
           <a href="tel:+27816137187" class="cm-card card reveal delay-1">
@@ -124,107 +121,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
 
-        <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website%20for%20my%20business."
-           class="btn-wa reveal" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-      </div>
-
-      <!-- ── FORM COLUMN ─────────────────────────────────────── -->
-      <div class="contact-form-wrap card reveal">
-
-        <!-- Formspree success message (shown automatically by SDK) -->
-        <div data-fs-success class="form-success" style="display:none">
-          <i class="fas fa-check-circle"></i>
-          <div>
-            <strong>Message sent!</strong><br/>
-            We'll get back to you within 24 hours.
-          </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem">
+          <a href="https://wa.me/27816137187?text=Hi%20NexoSites!%20I%27d%20like%20a%20website%20for%20my%20business."
+             class="btn-wa reveal" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+          <a href="../quote/" class="btn btn-primary reveal"><i class="fas fa-calculator"></i> Get an Instant Quote</a>
         </div>
-
-        <!-- Formspree global error message -->
-        <div data-fs-error class="form-error-global" style="display:none">
-          <i class="fas fa-exclamation-circle"></i>
-          <div>Something went wrong. Please email us directly at <a href="mailto:griesel050@gmail.com">griesel050@gmail.com</a></div>
-        </div>
-
-        <form id="contact-form">
-
-          <div class="form-row">
-            <div class="fg">
-              <label for="name">Your Name *</label>
-              <input
-                type="text" id="name" name="name"
-                placeholder="John Smith"
-                required autocomplete="name"
-                data-fs-field/>
-              <span class="fs-field-error" data-fs-error="name"></span>
-            </div>
-            <div class="fg">
-              <label for="biz">Business Name</label>
-              <input
-                type="text" id="biz" name="biz"
-                placeholder="My Business"
-                autocomplete="organization"
-                data-fs-field/>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="fg">
-              <label for="email">Email Address *</label>
-              <input
-                type="email" id="email" name="email"
-                placeholder="you@example.com"
-                required autocomplete="email"
-                data-fs-field/>
-              <span class="fs-field-error" data-fs-error="email"></span>
-            </div>
-            <div class="fg">
-              <label for="phone">Phone / WhatsApp</label>
-              <input
-                type="tel" id="phone" name="phone"
-                placeholder="+1 555 000 0000"
-                autocomplete="tel"
-                data-fs-field/>
-            </div>
-          </div>
-
-          <div class="fg">
-            <label for="service">Service Needed *</label>
-            <select id="service" name="service" required data-fs-field>
-              <option value="" disabled selected>Select a service…</option>
-              <option value="New Business Website">New Business Website</option>
-              <option value="Portfolio Website">Portfolio Website</option>
-              <option value="Landing Page">Landing Page</option>
-              <option value="Website Update">Website Update</option>
-              <option value="Not Sure">Not Sure — Help Me Decide</option>
-            </select>
-            <span class="fs-field-error" data-fs-error="service"></span>
-          </div>
-
-          <div class="fg">
-            <label for="message">Tell Us About Your Project *</label>
-            <textarea
-              id="message" name="message" rows="5"
-              placeholder="Describe your business, what you need, your ideas…"
-              required
-              data-fs-field></textarea>
-            <span class="fs-field-error" data-fs-error="message"></span>
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-block" data-fs-submit-btn>
-            <i class="fas fa-paper-plane"></i>
-            <span class="btn-label">Send Message</span>
-            <span class="btn-sending" style="display:none">
-              <i class="fas fa-circle-notch fa-spin"></i> Sending…
-            </span>
-          </button>
-
-        </form>
-      </div>
-
     </div>
+
   </div>
 </section>
 
@@ -232,23 +137,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div id="footer-placeholder"></div>
 
-<!-- Formspree Ajax SDK -->
-<script>
-  window.formspree = window.formspree || function () {
-    (formspree.q = formspree.q || []).push(arguments);
-  };
-  formspree('initForm', {
-    formElement: '#contact-form',
-    formId: 'xkoejrar'
-  });
-</script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script src="/assets/js/supabase-client.js" defer></script>
 <script src="/assets/js/auth.js" defer></script>
 <script src="../../nav-footer.js" defer></script>
 <script src="../../main.js" defer></script>
-<script src="contact.js" defer></script>
 </body>
 </html>
