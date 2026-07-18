@@ -366,6 +366,14 @@
   /* ── PRICING CONFIG EDITOR ────────────────────────────────── */
   let pricingConfig = null;
 
+  const PRICING_GROUPS = {
+    'pc-project-types': { key: 'project_types', fields: [{ key: 'base', label: 'Base $', def: 100 }, { key: 'includedPages', label: 'Incl. Pages', def: 5 }] },
+    'pc-business-sizes': { key: 'business_sizes', fields: [{ key: 'mult', label: '× Multiplier', def: 1 }] },
+    'pc-features': { key: 'features', fields: [{ key: 'price', label: '+ $', def: 25 }] },
+    'pc-timelines': { key: 'timelines', fields: [{ key: 'mult', label: '× Multiplier', def: 1 }] },
+    'pc-maintenance': { key: 'maintenance_plans', fields: [{ key: 'monthly', label: '$ / month', def: 15 }] },
+  };
+
   async function loadPricingConfig() {
     const wrap = document.getElementById('pricing-editor');
     const { data, error } = await window.sb.from('pricing_config').select('*').eq('id', 1).single();
@@ -377,18 +385,33 @@
     renderPricingEditor();
   }
 
-  function pricingGroupTable(items, fields) {
-    const rows = items.map((item, i) => `
-      <tr data-idx="${i}">
-        <td><input type="text" class="pc-label" value="${escapeHtml(item.label)}" style="min-width:140px"/></td>
-        ${fields.map(f => `<td><input type="number" step="0.01" class="pc-${f.key}" value="${item[f.key]}" style="width:90px"/></td>`).join('')}
-      </tr>
-    `).join('');
+  function slugify(label, existingIds) {
+    let base = (label || 'item').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
+    let slug = base, n = 2;
+    while (existingIds.includes(slug)) { slug = `${base}-${n}`; n++; }
+    return slug;
+  }
+
+  function pricingRowHTML(item, fields) {
     return `
-      <table class="admin-table" style="margin-bottom:1rem">
-        <thead><tr><th>Label</th>${fields.map(f => `<th>${f.label}</th>`).join('')}</tr></thead>
-        <tbody>${rows}</tbody>
-      </table>`;
+      <tr data-id="${escapeHtml(item.id || '')}">
+        <td><input type="text" class="pc-label" value="${escapeHtml(item.label || '')}" style="min-width:120px"/></td>
+        <td><input type="text" class="pc-desc" value="${escapeHtml(item.desc || '')}" style="min-width:160px"/></td>
+        ${fields.map(f => `<td><input type="number" step="0.01" class="pc-${f.key}" value="${item[f.key] ?? f.def}"/></td>`).join('')}
+        <td><button type="button" class="pc-remove-btn" aria-label="Remove row"><i class="fas fa-xmark"></i></button></td>
+      </tr>`;
+  }
+
+  function pricingGroupTable(containerId, items, fields) {
+    const rows = items.map(item => pricingRowHTML(item, fields)).join('');
+    return `
+      <table class="admin-table" style="margin-bottom:.8rem">
+        <thead><tr><th>Label</th><th>Description</th>${fields.map(f => `<th>${f.label}</th>`).join('')}<th></th></tr></thead>
+        <tbody id="${containerId}-body">${rows}</tbody>
+      </table>
+      <button type="button" class="btn btn-ghost pc-add-btn" data-add="${containerId}" style="padding:.5em 1em;font-size:.82rem">
+        <i class="fas fa-plus"></i> Add Item
+      </button>`;
   }
 
   function renderPricingEditor() {
@@ -396,33 +419,64 @@
     document.getElementById('pricing-editor').innerHTML = `
       <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Project Types</h4>
-        <div id="pc-project-types">${pricingGroupTable(c.project_types, [{key:'base',label:'Base $'},{key:'includedPages',label:'Incl. Pages'}])}</div>
+        <div id="pc-project-types">${pricingGroupTable('pc-project-types', c.project_types, PRICING_GROUPS['pc-project-types'].fields)}</div>
       </div>
       <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Business Size Multipliers</h4>
-        <div id="pc-business-sizes">${pricingGroupTable(c.business_sizes, [{key:'mult',label:'× Multiplier'}])}</div>
+        <div id="pc-business-sizes">${pricingGroupTable('pc-business-sizes', c.business_sizes, PRICING_GROUPS['pc-business-sizes'].fields)}</div>
       </div>
       <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Features (add-on price)</h4>
-        <div id="pc-features">${pricingGroupTable(c.features, [{key:'price',label:'+ $'}])}</div>
+        <div id="pc-features">${pricingGroupTable('pc-features', c.features, PRICING_GROUPS['pc-features'].fields)}</div>
       </div>
       <div class="detail-card" style="margin-bottom:1.5rem">
         <h4>Timeline Multipliers</h4>
-        <div id="pc-timelines">${pricingGroupTable(c.timelines, [{key:'mult',label:'× Multiplier'}])}</div>
+        <div id="pc-timelines">${pricingGroupTable('pc-timelines', c.timelines, PRICING_GROUPS['pc-timelines'].fields)}</div>
       </div>
       <div class="detail-card">
         <h4>Maintenance Plans (monthly)</h4>
-        <div id="pc-maintenance">${pricingGroupTable(c.maintenance_plans, [{key:'monthly',label:'$ / month'}])}</div>
+        <div id="pc-maintenance">${pricingGroupTable('pc-maintenance', c.maintenance_plans, PRICING_GROUPS['pc-maintenance'].fields)}</div>
       </div>
     `;
+    wirePricingRowButtons();
   }
 
-  function readPricingGroup(containerId, original, fields) {
-    const rows = document.querySelectorAll(`#${containerId} tbody tr`);
-    return Array.from(rows).map((row, i) => {
-      const item = { ...original[i] };
-      item.label = row.querySelector('.pc-label').value.trim();
-      fields.forEach(f => { item[f.key] = Number(row.querySelector(`.pc-${f.key}`).value); });
+  function wirePricingRowButtons() {
+    document.querySelectorAll('.pc-remove-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tbody = btn.closest('tbody');
+        if (tbody.querySelectorAll('tr').length <= 1) { alert("Can't remove the last item in a category."); return; }
+        btn.closest('tr').remove();
+      });
+    });
+    document.querySelectorAll('[data-add]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const containerId = btn.dataset.add;
+        const group = PRICING_GROUPS[containerId];
+        const tbody = document.getElementById(`${containerId}-body`);
+        const blank = { label: 'New Item', desc: '' };
+        group.fields.forEach(f => { blank[f.key] = f.def; });
+        tbody.insertAdjacentHTML('beforeend', pricingRowHTML(blank, group.fields));
+        const newRow = tbody.lastElementChild;
+        newRow.querySelector('.pc-remove-btn').addEventListener('click', () => {
+          if (tbody.querySelectorAll('tr').length <= 1) { alert("Can't remove the last item in a category."); return; }
+          newRow.remove();
+        });
+        newRow.querySelector('.pc-label').focus();
+      });
+    });
+  }
+
+  function readPricingGroup(containerId, fields) {
+    const rows = document.querySelectorAll(`#${containerId}-body tr`);
+    const existingIds = Array.from(rows).map(r => r.dataset.id).filter(Boolean);
+    return Array.from(rows).map(row => {
+      const label = row.querySelector('.pc-label').value.trim() || 'Untitled';
+      const desc = row.querySelector('.pc-desc').value.trim();
+      let id = row.dataset.id;
+      if (!id) { id = slugify(label, existingIds); existingIds.push(id); }
+      const item = { id, label, desc };
+      fields.forEach(f => { item[f.key] = Number(row.querySelector(`.pc-${f.key}`).value) || 0; });
       return item;
     });
   }
@@ -434,11 +488,11 @@
     btn.disabled = true; label.style.display = 'none'; sending.style.display = 'inline-flex';
 
     const updated = {
-      project_types: readPricingGroup('pc-project-types', pricingConfig.project_types, [{key:'base'},{key:'includedPages'}]),
-      business_sizes: readPricingGroup('pc-business-sizes', pricingConfig.business_sizes, [{key:'mult'}]),
-      features: readPricingGroup('pc-features', pricingConfig.features, [{key:'price'}]),
-      timelines: readPricingGroup('pc-timelines', pricingConfig.timelines, [{key:'mult'}]),
-      maintenance_plans: readPricingGroup('pc-maintenance', pricingConfig.maintenance_plans, [{key:'monthly'}]),
+      project_types: readPricingGroup('pc-project-types', PRICING_GROUPS['pc-project-types'].fields),
+      business_sizes: readPricingGroup('pc-business-sizes', PRICING_GROUPS['pc-business-sizes'].fields),
+      features: readPricingGroup('pc-features', PRICING_GROUPS['pc-features'].fields),
+      timelines: readPricingGroup('pc-timelines', PRICING_GROUPS['pc-timelines'].fields),
+      maintenance_plans: readPricingGroup('pc-maintenance', PRICING_GROUPS['pc-maintenance'].fields),
     };
 
     const { error } = await window.sb.from('pricing_config').update(updated).eq('id', 1);
@@ -446,6 +500,7 @@
     btn.disabled = false; label.style.display = 'inline'; sending.style.display = 'none';
     if (error) { alert('Could not save pricing: ' + error.message); return; }
     pricingConfig = { ...pricingConfig, ...updated };
+    renderPricingEditor();
     alert('Pricing updated — the quote calculator now reflects these changes.');
   });
 

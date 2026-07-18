@@ -136,6 +136,21 @@
 .admin-table tr:last-child td { border-bottom: none; }
 .admin-table tr.clickable { cursor: pointer; transition: background .15s; }
 .admin-table tr.clickable:hover { background: rgba(79,195,232,.06); }
+.admin-table input[type="text"], .admin-table input[type="number"] {
+  background: var(--dark-2); border: 1px solid var(--border); border-radius: 2px;
+  color: var(--text); font-family: var(--ff-b); font-size: .85rem; padding: .5em .7em;
+  width: 100%; transition: border-color .2s;
+}
+.admin-table input[type="text"]:focus, .admin-table input[type="number"]:focus {
+  border-color: var(--purple-l); outline: none;
+}
+.pc-remove-btn {
+  width: 30px; height: 30px; display: grid; place-items: center;
+  border-radius: 2px; border: 1px solid var(--border); color: var(--text-2);
+  transition: all .2s;
+}
+.pc-remove-btn:hover { border-color: #ef4444; color: #ef4444; background: rgba(239,68,68,.08); }
+.pc-add-btn { margin-top: -0.5rem; margin-bottom: 1.5rem; }
 .tag-row { display: flex; flex-wrap: wrap; gap: .3rem; }
 .tag { font-size: .68rem; padding: .2em .7em; border-radius: 99px; background: rgba(79,195,232,.1); border: 1px solid var(--border-2); color: var(--purple-l); }
 
